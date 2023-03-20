@@ -1,14 +1,22 @@
 ﻿using character;
 
-ConsoleKeyInfo keyInfo;
-keyInfo = Console.ReadKey();
-var person = new Person();
+
+int[] coordinates = { 15, 15 };//Начальные координаты гг
+
+
 Console.WriteLine("Выберите героя:");
 Console.WriteLine("1. Воин");
 Console.WriteLine("2. Лучник");
 Console.WriteLine("3. Маг");
 int choice = Convert.ToInt32(Console.ReadLine());
-int[] coordinates = { 15, 15 };
+
+var person = new Person();//Создание переменной person, а потом ее переназначение
+
+//Для считывания клавиш
+ConsoleKeyInfo keyInfo;
+keyInfo = Console.ReadKey();
+
+//Выбор типа персонажа
 if (choice == 1)
 {
     person = new Warrior(coordinates);
@@ -22,20 +30,16 @@ else if (choice == 3)
     person = new Mage(coordinates);
 }
 
-
-
-
-
 Console.CursorVisible = false;
 Console.ForegroundColor = ConsoleColor.Green;
 
+char playerChar = 'X';//Моделька персонажа 
 
-char playerChar = 'X';
-
-// Координаты флага
+// Координаты флага(для тестов)
 int flagX = 25;
 int flagY = 5;
 
+//Передвижение по консоли
 do
 {
     Console.Clear();
@@ -47,7 +51,7 @@ do
 
     keyInfo = Console.ReadKey();
 
-    playerChar = playerChar == 'X' ? 'Y' : 'X';
+    playerChar = playerChar == 'X' ? 'Y' : 'X';//Типа анимация движения
 
     switch (keyInfo.Key)
     {
