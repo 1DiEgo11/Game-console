@@ -15,7 +15,7 @@
         public int level;
 
 
-
+        фвыфывфыв
         public Person()
         {
             this.type_of_person = 0;
