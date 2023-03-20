@@ -4,7 +4,7 @@
     public class Person
     {
         public int type_of_person;
-        public int hurt;
+        public int heart;
         public int[] coordinates;
         public int money;
         public string[]? inventory;
@@ -15,11 +15,11 @@
         public int level;
 
 
-        фвыфывфыв
+       
         public Person()
         {
             this.type_of_person = 0;
-            this.hurt = 6;
+            this.heart = 6;
             this.money = 0;
             this.mana = 20;
             this.damage = 2;
