@@ -1,13 +1,34 @@
 ﻿using character;
 
+ConsoleKeyInfo keyInfo;
+keyInfo = Console.ReadKey();
+var person = new Person();
+Console.WriteLine("Выберите героя:");
+Console.WriteLine("1. Воин");
+Console.WriteLine("2. Лучник");
+Console.WriteLine("3. Маг");
+int choice = Convert.ToInt32(Console.ReadLine());
 int[] coordinates = { 15, 15 };
+if (choice == 1)
+{
+    person = new Warrior(coordinates);
+}
+else if (choice == 2)
+{
+    person = new Archer(coordinates);
+}
+else if (choice == 3)
+{
+    person = new Mage(coordinates);
+}
 
-var person = new Warrior(coordinates);
+
+
 
 
 Console.CursorVisible = false;
 Console.ForegroundColor = ConsoleColor.Green;
-ConsoleKeyInfo keyInfo;
+
 
 char playerChar = 'X';
 
