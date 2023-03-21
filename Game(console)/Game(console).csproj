@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Character\Character.csproj" />
+    <ProjectReference Include="..\weapon\weapon.csproj" />
   </ItemGroup>
 
 </Project>

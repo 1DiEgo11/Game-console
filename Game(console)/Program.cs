@@ -1,5 +1,5 @@
 ﻿using character;
-
+using weapon;
 
 int[] coordinates = { 15, 15 };//Начальные координаты гг
 
