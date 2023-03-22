@@ -7,9 +7,45 @@
         public string Name;
     }
 
-    public class Iron_sword: Weapon
+    public class Poiton
     {
-      public Iron_sword()
+        public string Type;
+        public string Name;
+        public int stat;
+    }
+
+    public class Heal : Poiton
+    {
+        public Heal()
+        {
+            this.stat = 10;
+            this.Type = "Heal";
+            this.Name = "Heal poiton";
+        }
+    }
+
+    public class defend : Poiton
+    {
+        public defend()
+        {
+            this.stat = 10;
+            this.Type = "defend";
+            this.Name = "Defend poiton";
+        }
+    }
+
+    public class Strengh : Poiton
+    {
+        public Strengh()
+        {
+            this.stat = 1;
+            this.Type = "strengh";
+            this.Name = "Strengh poiton";
+        }
+    }
+    public class Iron_sword : Weapon
+    {
+        public Iron_sword()
         {
             this.Damage = 1.25;
             this.Type = "sword";
@@ -116,7 +152,7 @@
         }
     }
 
-    public class Ebeishaya: Weapon
+    public class Ebeishaya : Weapon
     {
         public Ebeishaya()
         {
