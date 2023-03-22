@@ -1,4 +1,5 @@
 ﻿using character;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Movement
 {
@@ -21,6 +22,8 @@ namespace Movement
                 case ConsoleKey.S:
                     person.coordinates[1]++;
                     break;
+                default:
+                    break;
             }
         }
 
@@ -28,17 +31,18 @@ namespace Movement
         {
             int[] coordinates = { 15, 15 };//Начальные координаты гг
 
-
+            Console.WriteLine("Для выхода нажмите - Escape");
+            Console.SetCursorPosition(0, 3);
             Console.WriteLine("Выберите героя:");
             Console.WriteLine("1. Воин (Нажмите Q для выбора)");
             Console.WriteLine("2. Лучник (Нажмите W для выбора)");
             Console.WriteLine("3. Маг (Нажмите E для выбора)");
+            
 
             var person = new Person();//Создание переменной person, а потом ее переназначение
 
             //Для считывания клавиш
-            ConsoleKeyInfo keyInfo;
-            keyInfo = Console.ReadKey();
+            ConsoleKeyInfo keyInfo = Console.ReadKey();
 
             switch (keyInfo.Key)
             {
@@ -50,6 +54,9 @@ namespace Movement
                     break;
                 case ConsoleKey.E:
                     person = new Mage(coordinates);
+                    break;
+                case ConsoleKey.Escape:
+                    return ;
                     break;
             }
 
@@ -68,11 +75,14 @@ namespace Movement
                 Console.Clear();
 
                 if (person.type_of_person == 1)
-                    Console.WriteLine("Ваш тип персонажа - ВОИН");
+                    Console.WriteLine("Персонаж - ВОИН");
                 else if (person.type_of_person == 2)
-                    Console.WriteLine("Ваш тип персонажа - ЛУЧНИК");
+                    Console.WriteLine("Персонаж - ЛУЧНИК");
                 else
-                    Console.WriteLine("Ваш тип персонажа - МАГ");
+                    Console.WriteLine("Персонаж - МАГ");
+
+                Console.WriteLine("HP - {0} (+{1})", person.heart, person.armor);
+                Console.WriteLine("Деньги - {0}", person.money);
 
                 Console.SetCursorPosition(flagX, flagY);
                 Console.Write("F");
