@@ -1,5 +1,4 @@
 ﻿using character;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Movement
 {
@@ -22,8 +21,6 @@ namespace Movement
                 case ConsoleKey.S:
                     person.coordinates[1]++;
                     break;
-                default:
-                    break;
             }
         }
 
@@ -38,7 +35,6 @@ namespace Movement
             Console.WriteLine("2. Лучник (Нажмите W для выбора)");
             Console.WriteLine("3. Маг (Нажмите E для выбора)");
             
-
             var person = new Person();//Создание переменной person, а потом ее переназначение
 
             //Для считывания клавиш
@@ -56,8 +52,7 @@ namespace Movement
                     person = new Mage(coordinates);
                     break;
                 case ConsoleKey.Escape:
-                    return ;
-                    break;
+                    return;
             }
 
             Console.CursorVisible = false;
