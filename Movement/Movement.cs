@@ -1,4 +1,5 @@
 ﻿using character;
+using enemy;
 
 namespace Movement
 {
@@ -59,7 +60,8 @@ namespace Movement
             Console.ForegroundColor = ConsoleColor.Green;
 
             char playerChar = 'X';//Моделька персонажа 
-
+            char enemyChar = 'Z';//Enemy
+            Zombi test = new Zombi(1);
             // Координаты флага(для тестов)
             int flagX = 25;
             int flagY = 5;
@@ -81,6 +83,29 @@ namespace Movement
 
                 Console.SetCursorPosition(flagX, flagY);
                 Console.Write("F");
+
+                Console.SetCursorPosition(test.coordinates[0], test.coordinates[1]);
+                Console.Write(enemyChar);
+                Random  random = new Random();
+                int enemym = random.Next(0, 1);
+                int orientation = random.Next(0, 10);
+                int xy = random.Next(0, 10);
+                if (orientation < 6 && xy <6 && test.coordinates[0] > 1)
+                {
+                    test.coordinates[0]--;
+                }
+                if (orientation > 5 && xy < 6 && test.coordinates[0] < 209)
+                {
+                    test.coordinates[0]++;
+                }
+                if (orientation < 6 && xy > 5 && test.coordinates[1] > 1)
+                {
+                    test.coordinates[1]--;
+                }
+                if (orientation > 5 && xy > 5 && test.coordinates[0] < 49)
+                {
+                    test.coordinates[1]++;
+                } //типо движение противника
 
                 Console.SetCursorPosition(person.coordinates[0], person.coordinates[1]);
                 Console.Write(playerChar);
