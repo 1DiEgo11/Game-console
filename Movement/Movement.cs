@@ -1,32 +1,78 @@
 ﻿using character;
+using Draw;
 using enemy;
+using System;
 
 namespace Movement
 {
     public class MovePerson
     {
-        public static void Move(Person person, ConsoleKeyInfo keyInfo)
+
+        //public static void IsCollision(Person person)
+        //{
+        //    if (person.coordinates[0] - 1 == '|' && person.coordinates[1] == '|'
+        //            || person.coordinates[0] - 1 == '|' && person.coordinates[1] - 1 == '|'
+        //            || person.coordinates[0] - 1 == '|' && person.coordinates[1] - 2 == '|'
+        //            || person.coordinates[0] == '|' && person.coordinates[1] - 2 == '|'
+        //            || person.coordinates[0] + 1 == '|' && person.coordinates[1] - 2 == '|'
+        //            || person.coordinates[0] + 2 == '|' && person.coordinates[1] - 2 == '|'
+        //            || person.coordinates[0] + 2 == '|' && person.coordinates[1] - 1 == '|'
+        //            || person.coordinates[0] + 2 == '|' && person.coordinates[1] == '|'
+        //            || person.coordinates[0] + 2 == '|' && person.coordinates[1] + 1 == '|'
+        //            || person.coordinates[0] + 1 == '|' && person.coordinates[1] + 2 == '|'
+        //            || person.coordinates[0] == '|' && person.coordinates[1] + 2 == '|'
+        //            || person.coordinates[0] - 1 == '|' && person.coordinates[1] + 1 == '|')
+        //    {
+        //        Console.Clear();
+        //        Console.WriteLine("EPIC WIN!");
+        //    }
+            
+        //}
+        public static void Move(Person person, ConsoleKeyInfo keyInfo, int[,] doors)
         {
             keyInfo = Console.ReadKey();
             switch (keyInfo.Key)
             {
                 case ConsoleKey.A:
-                    person.coordinates[0]--;
+                    if (person.coordinates[0] - 1 != 1)
+                    {
+                        DrawPerson.ClearAnything(person.coordinates);
+                        person.coordinates[0] --;
+                    }
                     break;
                 case ConsoleKey.D:
-                    person.coordinates[0]++;
+                    if (person.coordinates[0] + 2 != 168 || person.coordinates[0] + 3 != 168 || person.coordinates[0] + 4 != 168 || person.coordinates[0] + 3 == doors[1, 0] && person.coordinates[1] == doors[1, 1])
+                    {
+                        DrawPerson.ClearAnything(person.coordinates);
+                        person.coordinates[0] += 4;
+                    }
                     break;
                 case ConsoleKey.W:
-                    person.coordinates[1]--;
+                    if (person.coordinates[1] - 2 != 7)
+                    {
+                        DrawPerson.ClearAnything(person.coordinates);
+                        person.coordinates[1]--;
+                    }
                     break;
                 case ConsoleKey.S:
-                    person.coordinates[1]++;
+                    if (person.coordinates[1] + 2 != 39)
+                    {
+                        DrawPerson.ClearAnything(person.coordinates);
+                        person.coordinates[1]++;
+                    }
                     break;
             }
         }
 
         public static void Game()
         {
+            int[,] doors = new int[6, 2];
+
+            Console.SetCursorPosition(37, 13);
+            Console.WriteLine("ДЛЯ АДЕКВАТНОЙ РАБОТЫ НАЖМИТЕ ALT + ENTER");
+            Thread.Sleep(3000);
+            Console.Clear();
+
             int[] coordinates = { 15, 15 };//Начальные координаты гг
 
             Console.WriteLine("Для выхода нажмите - Escape");
@@ -59,25 +105,25 @@ namespace Movement
             Console.CursorVisible = false;
             Console.ForegroundColor = ConsoleColor.Green;
 
-            char playerChar = 'X';//Моделька персонажа 
             char enemyChar = 'Z';//Enemy
             Zombi test = new Zombi(1);
             // Координаты флага(для тестов)
             int flagX = 25;
             int flagY = 5;
-
+            
+            Console.Clear();
+            DrawMap.FirstMap(doors);
+            Console.SetCursorPosition(0, 0);
+            if (person.type_of_person == 1)
+                Console.WriteLine("Персонаж - ВОИН");
+            else if (person.type_of_person == 2)
+                Console.WriteLine("Персонаж - ЛУЧНИК");
+            else
+                Console.WriteLine("Персонаж - МАГ");
             //Передвижение по консоли
             do
             {
-                Console.Clear();
-
-                if (person.type_of_person == 1)
-                    Console.WriteLine("Персонаж - ВОИН");
-                else if (person.type_of_person == 2)
-                    Console.WriteLine("Персонаж - ЛУЧНИК");
-                else
-                    Console.WriteLine("Персонаж - МАГ");
-
+                Console.SetCursorPosition(0, 2);
                 Console.WriteLine("HP - {0} (+{1})", person.heart, person.armor);
                 Console.WriteLine("Деньги - {0}", person.money);
 
@@ -87,10 +133,9 @@ namespace Movement
                 Console.SetCursorPosition(test.coordinates[0], test.coordinates[1]);
                 Console.Write(enemyChar);
                 Random  random = new Random();
-                int enemym = random.Next(0, 1);
-                int orientation = random.Next(0, 10);
-                int xy = random.Next(0, 10);
-                if (orientation < 6 && xy <6 && test.coordinates[0] > 1)
+                int orientation = random.Next(0, 11);
+                int xy = random.Next(0, 11);
+                if (orientation < 6 && xy < 6 && test.coordinates[0] > 1)
                 {
                     test.coordinates[0]--;
                 }
@@ -107,21 +152,25 @@ namespace Movement
                     test.coordinates[1]++;
                 } //типо движение противника
 
-                Console.SetCursorPosition(person.coordinates[0], person.coordinates[1]);
-                Console.Write(playerChar);
-                playerChar = playerChar == 'X' ? 'Y' : 'X';//Типа анимация движения
+                
 
-                Movement.MovePerson.Move(person, keyInfo);
+                person.type_map = 1;
 
+                DrawPerson.Draw_Person(person.coordinates);
 
-                if (person.coordinates[0] == flagX && person.coordinates[1] == flagY)
+                Move(person, keyInfo, doors);
+
+                
+
+                if (person.coordinates[0] - 1 == doors[1, 0] && person.coordinates[1] == doors[1, 1])
                 {
+                    person.level++;
                     Console.Clear();
-                    Console.WriteLine("EPIC WIN!");
+                    Console.WriteLine("ВЫ МУЖИИИИИИИИК!!!!!!!!!!!");
                     break;
                 }
 
-            } while (keyInfo.Key != ConsoleKey.Escape);
+            } while (keyInfo.Key != ConsoleKey.Backspace);
         }
     }
 }

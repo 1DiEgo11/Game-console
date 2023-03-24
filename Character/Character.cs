@@ -4,15 +4,16 @@
     public class Person
     {
         public int type_of_person;
-        public int heart;
+        public double heart;
         public int[] coordinates;
         public int money;
         public string[]? inventory;
         public int mana;
-        public string weapon_type;
+        public string? weapon_type;
         public double damage;
         public int armor;
         public int level;
+        public int type_map;
 
 
        
@@ -24,7 +25,7 @@
             this.mana = 20;
             this.damage = 2;
             this.armor = 0;
-            this.level = 0;
+            this.level = 0; 
         }
     }
 
