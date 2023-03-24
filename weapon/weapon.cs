@@ -198,11 +198,11 @@
         {
             Random random = new Random();
             double res = random.Next(0, 10);
-            double res2 = random.Next(0, 99);
-            double res3 = random.Next(0, 10);
+            double res2 = random.Next(0, 100);
+            double res3 = random.Next(0, 11);
             double res4 = 0;
             res2 = res2 / 100;
-            if (5 > res3)
+            if (6 > res3)
             {
                 res4 = -res - res2;
             }
