@@ -13,7 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "weapon", "..\weapon\weapon.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "enemy", "..\enemy\enemy.csproj", "{5D1419FE-F772-4CEE-9A6C-EE3F00657CCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Draw", "..\Draw\Draw.csproj", "{C80E4332-E4D1-4666-BD3E-B2F63AF02DA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Draw", "..\Draw\Draw.csproj", "{C80E4332-E4D1-4666-BD3E-B2F63AF02DA3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerationMap", "..\GenerationMap\GenerationMap.csproj", "{D35A9D18-68C4-4A4B-A72C-5669DF165496}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quests", "..\quests\quests.csproj", "{0C23284D-E98D-4C09-80CD-33BD495AD77D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{C80E4332-E4D1-4666-BD3E-B2F63AF02DA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C80E4332-E4D1-4666-BD3E-B2F63AF02DA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C80E4332-E4D1-4666-BD3E-B2F63AF02DA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D35A9D18-68C4-4A4B-A72C-5669DF165496}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D35A9D18-68C4-4A4B-A72C-5669DF165496}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D35A9D18-68C4-4A4B-A72C-5669DF165496}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D35A9D18-68C4-4A4B-A72C-5669DF165496}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C23284D-E98D-4C09-80CD-33BD495AD77D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C23284D-E98D-4C09-80CD-33BD495AD77D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C23284D-E98D-4C09-80CD-33BD495AD77D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C23284D-E98D-4C09-80CD-33BD495AD77D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

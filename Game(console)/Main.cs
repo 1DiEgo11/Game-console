@@ -1,7 +1,5 @@
-﻿using character;
-using Movement;
-using weapon;
-using Draw;
+﻿using Movement;
 
-
-Movement.MovePerson.Game();
+MovePerson.Game();
+Console.Clear();
+Console.WriteLine("До скорой встречи!!!");

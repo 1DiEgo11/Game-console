@@ -19,6 +19,7 @@
        
         public Person()
         {
+            this.type_map = 1;
             this.type_of_person = 0;
             this.heart = 6;
             this.money = 0;

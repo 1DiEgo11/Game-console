@@ -1,16 +1,10 @@
-﻿using System;
-using System.Runtime.CompilerServices;
+﻿using character;
 
 namespace Draw
 {
     public class DrawMap
     {
-        public int TypeMap;
-        public int[,] coord; //координаты объектов врагов и тп
-         //координаты дверей (2)
-
-        
-        public static void FirstMap(int[,] door)
+        public static void FirstMap(Person person, int[,] door)
         {
             
             Console.ForegroundColor = ConsoleColor.Green;
@@ -19,80 +13,94 @@ namespace Draw
 
             int line = 35;         //строка
             int column = 170;       //столбец
-
-            for (int i = 0; i < line; i++)
+            for (int y = 0; y < line; y++)
             {
-                for (int j = 0; j < column; j++)
+                for (int x = 0; x < column; x++)
                 {
-                    if (i == 0 | j == 0 | i == line - 1 | j == column - 1)
+                    if (y == 0 || x == 0 || y == line - 1 || x == column - 1)
                     {
-                        Console.Write('#');
+                        Console.Write('#');//записывание в стринг попробовать 
                     }
                     else
                     {
-                        Console.Write(' ');
-
+                        Console.Write('.');
                     }
                 }
                 Console.WriteLine();
             }
 
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.SetCursorPosition(0, 21);
-            Console.Write('X');
-            Console.SetCursorPosition(0, 22);
-            Console.Write('X');
-            Console.SetCursorPosition(0, 23);
-            Console.Write('X');
+            if (person.level == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.SetCursorPosition(169, 21);
+                Console.Write('|');
+                Console.SetCursorPosition(169, 22);
+                Console.Write('|');
+                Console.SetCursorPosition(169, 23);
+                Console.Write('|');
+            }
+            else
+            {
+                Console.SetCursorPosition(78, 40);
+                Console.Write("------");
+            }
 
-            Console.SetCursorPosition(169, 21);
-            Console.Write('|');
-            Console.SetCursorPosition(169, 22);
-            Console.Write('|');
-            Console.SetCursorPosition(169, 23);
-            Console.Write('|');
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.SetCursorPosition(100, 22);
+            Console.Write("_/\\_");
+            Console.SetCursorPosition(100, 23);
+            Console.Write("(@@)");
+            Console.SetCursorPosition(100, 24);
+            Console.Write("|/\\|");
+            Console.SetCursorPosition(100, 25);
+            Console.Write("|__|");
+            Console.SetCursorPosition(100, 26);
+            Console.Write(" ~~ ");
 
-            //door[0, 0] = 169; door[0, 1] = 21;
-            door[1, 0] = 169; door[1, 1] = 22;
-            //door[2, 0] = 169; door[2, 1] = 23;
-
+            door[0, 0] = 169; door[0, 1] = 22;
         }
 
-        public void SecondMap(int[,] door)
+        public static void SecondMap(Person person, int[,] door)
         {
-            
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.SetCursorPosition(0, 6);
-
 
             int line = 35;         //строка
             int column = 170;       //столбец
 
-            for (int i = 0; i < line; i++)
+            for (int y = 0; y < line; y++)
             {
-                for (int j = 0; j < column; j++)
+                for (int x = 0; x < column; x++)
                 {
-                    if (i == 0 | j == 0 | i == line - 1 | j == column - 1 | (i == 4 & j < 20) | (i < 15 & j == 70) | (i == 23 & j > 120) | (i > 25 & j == 105))
+                    if (person.coordinates[0] - 10 < x && x < person.coordinates[0] + 11 && person.coordinates[1] - 14 < y && y < person.coordinates[1])
                     {
-                        Console.Write('#');
+                        if (y == 0 | x == 0 | y == line - 1 | x == column - 1 | (y == 4 & x < 20) | (y < 15 & x == 70) | (y == 23 & x > 170) | (y > 25 & x == 105) | (x == 190 & y < 10))
+                        {
+                            Console.Write('#');
+                        }
+                        else
+                        { 
+                            Console.Write('.');
+                        }
                     }
                     else
-                    {
                         Console.Write(' ');
-
-                    }
                 }
                 Console.WriteLine();
-
             }
 
+            if(person.level % 3 == 0)
+            {
+                Console.SetCursorPosition(78, 6);
+                Console.Write("------");
+            }
             Console.ForegroundColor = ConsoleColor.White;
             Console.SetCursorPosition(0, 21);
-            Console.Write('|');
+            Console.Write('X');
             Console.SetCursorPosition(0, 22);
-            Console.Write('|');
+            Console.Write('X');
             Console.SetCursorPosition(0, 23);
-            Console.Write('|');
+            Console.Write('X');
 
             Console.SetCursorPosition(169, 21);
             Console.Write('|');
@@ -101,15 +109,9 @@ namespace Draw
             Console.SetCursorPosition(169, 23);
             Console.Write('|');
 
-            door[0, 0] = 0; door[0, 1] = 21;
-            door[1, 0] = 0; door[1, 1] = 22;
-            door[2, 0] = 0; door[2, 1] = 23;
-
-            door[3, 0] = 169; door[3, 1] = 21;
-            door[4, 0] = 169; door[4, 1] = 22;
-            door[5, 0] = 169; door[5, 1] = 23;
+            door[0, 0] = 169; door[0, 1] = 22;
         }
-        public static void ThirdMap(int[,] door)
+        public static void ThirdMap(Person person, int[,] door)
         {
             
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -118,32 +120,40 @@ namespace Draw
 
             int line = 35;         //строка
             int column = 170;       //столбец
-            for (int i = 0; i < line; i++)
+            for (int y = 0; y < line; y++)
             {
-                for (int j = 0; j < column; j++)
+                for (int x = 0; x < column; x++)
                 {
-                    if (i == 0 | j == 0 | i == line - 1 | j == column - 1 | (j == 35 & i > 15) | (j == 60 & i < 15) | (j == 85 & i > 15) | (j == 110 & i < 15) | (j == 135 & i > 15) | (j == 160 & i < 15))
+                    if (person.coordinates[0] - 10 < x && x < person.coordinates[0] + 11 && person.coordinates[1] - 14 < y && y < person.coordinates[1])
                     {
-                        Console.Write('#');
+                        if (y == 0 | x == 0 | y == line - 1 | x == column - 1 | (x == 35 & y > 15) | (x == 60 & y < 15) | (x == 85 & y > 15) | (x == 110 & y < 15) | (x == 135 & y > 15) | (x == 160 & y < 15))
+                        {
+                            Console.Write('#');
+                        }
+                        else
+                        {
+                            Console.Write('.');
+                        }
                     }
-
                     else
-                    {
                         Console.Write(' ');
-
-                    }
                 }
                 Console.WriteLine();
             }
 
+            if (person.level % 3 == 0)
+            {
+                Console.SetCursorPosition(78, 6);
+                Console.Write("------");
+            }
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.SetCursorPosition(0, 21);
-            Console.Write('|');
+            Console.Write('X');
             Console.SetCursorPosition(0, 22);
-            Console.Write('|');
+            Console.Write('X');
             Console.SetCursorPosition(0, 23);
-            Console.Write('|');
+            Console.Write('X');
 
             Console.SetCursorPosition(169, 21);
             Console.Write('|');
@@ -152,15 +162,9 @@ namespace Draw
             Console.SetCursorPosition(169, 23);
             Console.Write('|');
 
-            door[0, 0] = 0; door[0, 1] = 21;
-            door[1, 0] = 0; door[1, 1] = 22;
-            door[2, 0] = 0; door[2, 1] = 23;
-
-            door[3, 0] = 169; door[3, 1] = 21;
-            door[4, 0] = 169; door[4, 1] = 22;
-            door[5, 0] = 169; door[5, 1] = 23;
+            door[0, 0] = 169; door[0, 1] = 22;
         }
-        public static void FouthMap(int[,] door)
+        public static void FouthMap(Person person, int[,] door)
         {
             
             Console.ForegroundColor = ConsoleColor.DarkBlue;
@@ -169,29 +173,39 @@ namespace Draw
 
             int line = 35;         //строка
             int column = 170;       //столбец
-            for (int i = 0; i < line; i++)
+            for (int y = 0; y < line; y++)
             {
-                for (int j = 0; j < column; j++)
+                for (int x = 0; x < column; x++)
                 {
-                    if (i == 0 | j == 0 | i == line - 1 | j == column - 1 | (i == 6 & j < 30) | (j == 50 & i > 20) | (j == 105 & i < 8) | (i == 20 & j > 150))
+                    if (person.coordinates[0] - 10 < x && x < person.coordinates[0] + 11 && person.coordinates[1] - 14 < y && y < person.coordinates[1])
                     {
-                        Console.Write('#');
+                        if (y == 0 | x == 0 | y == line - 1 | x == column - 1 | (y == 6 & x < 30) | (x == 50 & y > 20) | (x == 105 & y < 8) | (y == 20 & x > 150))
+                        {
+                            Console.Write('#');
+                        }
+                        else
+                        {
+                            Console.Write('.');
+                        }
                     }
                     else
-                    {
                         Console.Write(' ');
-                    }
                 }
                 Console.WriteLine();
             }
 
+            if (person.level % 3 == 0)
+            {
+                Console.SetCursorPosition(78, 6);
+                Console.Write("------");
+            }
             Console.ForegroundColor = ConsoleColor.White;
             Console.SetCursorPosition(0, 21);
-            Console.Write('|');
+            Console.Write('X');
             Console.SetCursorPosition(0, 22);
-            Console.Write('|');
+            Console.Write('X');
             Console.SetCursorPosition(0, 23);
-            Console.Write('|');
+            Console.Write('X');
 
             Console.SetCursorPosition(169, 21);
             Console.Write('|');
@@ -200,15 +214,9 @@ namespace Draw
             Console.SetCursorPosition(169, 23);
             Console.Write('|');
 
-            door[0, 0] = 0; door[0, 1] = 21;
-            door[1, 0] = 0; door[1, 1] = 22;
-            door[2, 0] = 0; door[2, 1] = 23;
-
-            door[3, 0] = 169; door[3, 1] = 21;
-            door[4, 0] = 169; door[4, 1] = 22;
-            door[5, 0] = 169; door[5, 1] = 23;
+            door[0, 0] = 169; door[0, 1] = 22;
         }
-        public static void FifthMap(int[,] door)
+        public static void FifthMap(Person person, int[,] door)
         {
             
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -217,31 +225,39 @@ namespace Draw
 
             int line = 35;         //строка
             int column = 170;       //столбец
-            for (int i = 0; i < line; i++)
+            for (int y = 0; y < line; y++)
             {
-                for (int j = 0; j < column; j++)
+                for (int x = 0; x < column; x++)
                 {
-                    if (i == 0 | j == 0 | i == line - 1 | j == column - 1 | (j == 103 & i < 13) | (j == 103 & i > 18))
+                    if (person.coordinates[0] - 10 < x && x < person.coordinates[0] + 11 && person.coordinates[1] - 14 < y && y < person.coordinates[1])
                     {
-                        Console.Write('#');
+                        if (y == 0 | x == 0 | y == line - 1 | x == column - 1 | (x == 103 & y < 13) | (x == 103 & y > 18))
+                        {
+                            Console.Write('#');
+                        }
+                        else
+                        {
+                            Console.Write('.');
+                        }
                     }
                     else
-                    {
                         Console.Write(' ');
-                    }
                 }
                 Console.WriteLine();
             }
 
-
-
+            if (person.level % 3 == 0)
+            {
+                Console.SetCursorPosition(78, 6);
+                Console.Write("------");
+            }
             Console.ForegroundColor = ConsoleColor.White;
             Console.SetCursorPosition(0, 21);
-            Console.Write('|');
+            Console.Write('X');
             Console.SetCursorPosition(0, 22);
-            Console.Write('|');
+            Console.Write('X');
             Console.SetCursorPosition(0, 23);
-            Console.Write('|');
+            Console.Write('X');
 
             Console.SetCursorPosition(169, 21);
             Console.Write('|');
@@ -250,16 +266,10 @@ namespace Draw
             Console.SetCursorPosition(169, 23);
             Console.Write('|');
 
-            door[0, 0] = 0; door[0, 1] = 21;
-            door[1, 0] = 0; door[1, 1] = 22;
-            door[2, 0] = 0; door[2, 1] = 23;
-
-            door[3, 0] = 169; door[3, 1] = 21;
-            door[4, 0] = 169; door[4, 1] = 22;
-            door[5, 0] = 169; door[5, 1] = 23;
+            door[0, 0] = 169; door[0, 1] = 22;
         }
 
-        public static void SixMap(int[,] door)
+        public static void SixMap(Person person, int[,] door)
         {
             
             Console.ForegroundColor = ConsoleColor.DarkCyan;
@@ -267,29 +277,39 @@ namespace Draw
 
             int line = 35;         //строка
             int column = 170;       //столбец
-            for (int i = 0; i < line; i++)
+            for (int y = 0; y < line; y++)
             {
-                for (int j = 0; j < column; j++)
+                for (int x = 0; x < column; x++)
                 {
-                    if (i == 0 | j == 0 | i == line - 1 | j == column - 1 | (i == 30 & j < 20) | (i == 25 & j > 30 & j < 60) | (i == 20 & j > 70 & j < 100) | (i == 15 & j > 110 & j < 140) | (i == 10 & j > 150 & j < 180) | (i == 5 & j > 190))
+                    if (person.coordinates[0] - 10 < x && x < person.coordinates[0] + 11 && person.coordinates[1] - 14 < y && y < person.coordinates[1])
                     {
-                        Console.Write('#');
+                        if (y == 0 | x == 0 | y == line - 1 | x == column - 1 | (y == 30 & x < 20) | (y == 25 & x > 30 & x < 60) | (y == 20 & x > 70 & x < 100) | (y == 15 & x > 110 & x < 140) | (y == 10 & x > 150 & x < 180) | (y == 5 & x > 190))
+                        {
+                            Console.Write('#');
+                        }
+                        else
+                        {
+                            Console.Write('.');
+                        }
                     }
                     else
-                    {
                         Console.Write(' ');
-                    }
                 }
                 Console.WriteLine();
             }
 
+            if (person.level % 3 == 0)
+            {
+                Console.SetCursorPosition(78, 6);
+                Console.Write("------");
+            }
             Console.ForegroundColor = ConsoleColor.White;
             Console.SetCursorPosition(0, 21);
-            Console.Write('|');
+            Console.Write('X');
             Console.SetCursorPosition(0, 22);
-            Console.Write('|');
+            Console.Write('X');
             Console.SetCursorPosition(0, 23);
-            Console.Write('|');
+            Console.Write('X');
 
             Console.SetCursorPosition(169, 21);
             Console.Write('|');
@@ -298,13 +318,7 @@ namespace Draw
             Console.SetCursorPosition(169, 23);
             Console.Write('|');
 
-            door[0, 0] = 0; door[0, 1] = 21;
-            door[1, 0] = 0; door[1, 1] = 22;
-            door[2, 0] = 0; door[2, 1] = 23;
-
-            door[3, 0] = 169; door[3, 1] = 21;
-            door[4, 0] = 169; door[4, 1] = 22;
-            door[5, 0] = 169; door[5, 1] = 23;
+            door[0, 0] = 169; door[0, 1] = 22;
         }
     }
 
@@ -315,45 +329,20 @@ namespace Draw
             Console.ForegroundColor = ConsoleColor.Yellow;
 
             Console.SetCursorPosition((int)coordinates[0]-1, (int)coordinates[1] - 2);
-            Console.Write('_');
-            Console.SetCursorPosition((int)coordinates[0], (int)coordinates[1] - 2);
-            Console.Write('/');
-            Console.SetCursorPosition((int)coordinates[0] + 1, (int)coordinates[1] - 2);
-            Console.Write('\\');
-            Console.SetCursorPosition((int)coordinates[0] + 2, (int)coordinates[1] - 2);
-            Console.Write('_');
-
+            Console.Write(" MM ");
+            
             Console.SetCursorPosition((int)coordinates[0] - 1, (int)coordinates[1] - 1);
-            Console.Write('(');
-            Console.SetCursorPosition((int)coordinates[0], (int)coordinates[1] - 1);
-            Console.Write('@');
-            Console.SetCursorPosition((int)coordinates[0] + 1, (int)coordinates[1] - 1);
-            Console.Write('@');
-            Console.SetCursorPosition((int)coordinates[0] + 2, (int)coordinates[1] - 1);
-            Console.Write(')');
-
+            Console.Write("(00)");
+            
             Console.SetCursorPosition((int)coordinates[0] - 1, (int)coordinates[1]);
-            Console.Write('|');
-            Console.SetCursorPosition((int)coordinates[0], (int)coordinates[1]);
-            Console.Write('/');
-            Console.SetCursorPosition((int)coordinates[0] + 1, (int)coordinates[1]);
-            Console.Write('\\');
-            Console.SetCursorPosition((int)coordinates[0] + 2, (int)coordinates[1]);
-            Console.Write('|');
-
-            Console.SetCursorPosition((int)coordinates[0] - 1, (int)coordinates[1] + 1);
-            Console.Write('|');
+            Console.Write("/||\\");
+            
             Console.SetCursorPosition((int)coordinates[0], (int)coordinates[1] + 1);
-            Console.Write('_');
-            Console.SetCursorPosition((int)coordinates[0] + 1, (int)coordinates[1] + 1);
-            Console.Write('_');
-            Console.SetCursorPosition((int)coordinates[0] + 2, (int)coordinates[1] + 1);
-            Console.Write('|');
-
+            Console.Write("||");
+            
             Console.SetCursorPosition((int)coordinates[0], (int)coordinates[1] + 2);
-            Console.Write('~');
-            Console.SetCursorPosition((int)coordinates[0] + 1, (int)coordinates[1] + 2);
-            Console.Write('~');
+            Console.Write("~~");
+            
         }
 
         public static void ClearAnything(int[] coordinates)
@@ -367,7 +356,7 @@ namespace Draw
             Console.SetCursorPosition(coordinates[0] - 1, coordinates[1] + 1);
             Console.Write("    ");
             Console.SetCursorPosition(coordinates[0], coordinates[1] + 2);
-            Console.Write("   ");
+            Console.Write("    ");
 
         }
     }
