@@ -8,7 +8,7 @@ namespace Movement
     public class MovePerson
     { 
 
-        public static void ChillRoom(Person person, ConsoleKeyInfo keyInfo, int[,] door)
+        public static void ChillRoom(Person person, ConsoleKeyInfo keyInfo)
         {
             if (keyInfo.Key == ConsoleKey.E)
             {
@@ -17,50 +17,35 @@ namespace Movement
             }
         }
 
-        public static void Move(Person person, ConsoleKeyInfo keyInfo, int[,] doors)
+        public static void Move(Person person, ConsoleKeyInfo keyInfo, char[,] map)
         {
-            //keyInfo = Console.ReadKey();
-
             switch (keyInfo.Key)
             {
                 case ConsoleKey.A:
-                    if (person.coordinates[0] - 1 != 1)
+                    if (map[person.coordinates[1], person.coordinates[0] - 2] != '#' && map[person.coordinates[1], person.coordinates[0] - 2] != 'X')
                     {
                         person.coordinates[0]--;
                     }
                     break;
                 case ConsoleKey.D:
-                    if (person.coordinates[0] + 2 < 168 || person.coordinates[0] + 3 == doors[0, 0] && person.coordinates[1] == doors[0, 1])
+                    if (map[person.coordinates[1], person.coordinates[0] + 3] != '#')
                     {
-
                         person.coordinates[0]++;
-                        if (person.coordinates[0] + 2 < 167)
-                        {
-                            person.coordinates[0]++;
-                            if (person.coordinates[0] + 2 < 166)
-                            {
-                                person.coordinates[0]++;
-                            }
-                        }
                     }
                     break;
                 case ConsoleKey.W:
-                    if (person.coordinates[1] - 2 != 7)
+                    if (map[person.coordinates[1] - 3, person.coordinates[0]] != '#')
                     {
-
                         person.coordinates[1]--;
                     }
                     break;
                 case ConsoleKey.S:
-                    if (person.coordinates[1] + 3 != 40)
+                    if (map[person.coordinates[1] + 3, person.coordinates[0]] != '#')
                     {
                         person.coordinates[1]++;
                     }
                     break;
             }
-        }
-
-        public static void Move_console() { 
         }
 
         public static void Move_enemy(Enemy enemy) {
@@ -88,8 +73,8 @@ namespace Movement
 
         public static void Game()
         {
+            DrawMap draw = new DrawMap();
             int last_type_map = 0;
-            int[,] doors = new int[2, 2];
 
             Console.SetCursorPosition(37, 13);
             Console.WriteLine("ДЛЯ АДЕКВАТНОЙ РАБОТЫ НАЖМИТЕ ALT + ENTER");
@@ -127,14 +112,11 @@ namespace Movement
 
             Console.CursorVisible = false;
 
-
             //Передвижение по консоли
             do
             {
-                
                 Console.Clear();
-                
-                Console.SetCursorPosition(0, 0);
+                Console.SetCursorPosition(0, 39);
                 if (person.type_of_person == 1)
                     Console.WriteLine("Персонаж - ВОИН");
                 else if (person.type_of_person == 2)
@@ -142,30 +124,34 @@ namespace Movement
                 else
                     Console.WriteLine("Персонаж - МАГ");
 
-                Console.SetCursorPosition(0, 2);
+                ;
                 Console.WriteLine("HP - {0} (+{1})", person.heart, person.armor);
                 Console.WriteLine("Деньги - {0}", person.money);
                 Console.Write("{0} {1}", person.coordinates[0], person.coordinates[1] + 3);
 
-                
-                GenerationMap.GenerationMap.Map(person, doors);
-                
 
-                Move(person, keyInfo, doors);
+
+                GenerationMap.GenerationMap.Map(person, draw);
+                Console.Write(draw.map[10,10]);
+
+                Move(person, keyInfo, draw.map);
                 DrawPerson.Draw_Person(person.coordinates);
                 keyInfo = Console.ReadKey();
 
-                if (person.level % 3 == 0 && (person.coordinates[0] == 80 && person.coordinates[1] - 3 == 6) || person.type_map == 1)
+                if (person.type_map == 1 | (person.level % 3 == 0 && draw.map[person.coordinates[1] - 3, person.coordinates[0]] == '-'))
                 {
-                    last_type_map = person.type_map;
+                    if(person.type_map != 1)
+                        last_type_map = person.type_map;
                     person.type_map = 1;
-                    ChillRoom(person, keyInfo, doors);
+                    ChillRoom(person, keyInfo);
                 }
-                if(person.type_map == 1 && person.level != 0 && person.coordinates[0] == 80 && person.coordinates[1] + 3 == 40)
+
+                if(person.type_map == 1 && person.level != 0 && draw.map[person.coordinates[1] + 2, person.coordinates[0]] == '-')
                 {
                     person.type_map = last_type_map;
                 }
-                if (person.coordinates[0] + 2 == doors[0, 0] && person.coordinates[1] == doors[0, 1])
+
+                if (draw.map[person.coordinates[1], person.coordinates[0] + 2] == '|' || draw.map[person.coordinates[1] + 2, person.coordinates[0]] == '-')
                 {
                     person.coordinates[0] = 5;
                     person.coordinates[1] = 22;
@@ -179,7 +165,20 @@ namespace Movement
                     break;
                 }
 
-            }while (keyInfo.Key != ConsoleKey.Escape);
+                Console.SetCursorPosition(0, 39);
+                if (person.type_of_person == 1)
+                    Console.WriteLine("Персонаж - ВОИН");
+                else if (person.type_of_person == 2)
+                    Console.WriteLine("Персонаж - ЛУЧНИК");
+                else
+                    Console.WriteLine("Персонаж - МАГ");
+
+                Console.SetCursorPosition(0, 2);
+                Console.WriteLine("HP - {0} (+{1})", person.heart, person.armor);
+                Console.WriteLine("Деньги - {0}", person.money);
+                Console.Write("{0} {1}", person.coordinates[0], person.coordinates[1] + 3);
+
+            } while (keyInfo.Key != ConsoleKey.Escape);
         }
     }
 }
