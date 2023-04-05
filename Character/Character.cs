@@ -35,7 +35,7 @@ namespace character
             this.type_map = 1;
             this.type_of_person = 0;
             this.heart = 20;
-            this.money = 0;
+            this.money = 100;
             this.damage = 10;
             this.armor = 0;
             this.level = 0; 

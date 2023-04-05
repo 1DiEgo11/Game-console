@@ -217,7 +217,7 @@ namespace quests
                         shop = true;
                         while (shop)
                         {
-                            Console.WriteLine("Так,смотри. Вот что у меня есть:");
+                            Console.WriteLine("Так,смотри. Вот что у меня есть: (у тебя {0} деняг", person.money);
                             Console.WriteLine("1 - мечи. 2 - броня. 3 - зелья. 4 - луки. 5 - волшебные зелья. 6 - назад.");
 
                             switch (Convert.ToInt32(Console.ReadLine()))
