@@ -209,16 +209,56 @@ namespace Movement
             {
                 Console.Clear();
                 
-
-
-
                 Move(person, keyInfo, draw.map);
                 GenerationMap.GenerationMap.Map(person, draw);
                 DrawPerson.Draw_Person(person.coordinates);
 
-                
-                
-                
+                if (keyInfo.Key == ConsoleKey.B)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Zombie:");
+
+                    do
+                    {
+                        keyInfo = Console.ReadKey();
+                        Battle.Battle.Enemy_do(person, gen.enemy1, keyInfo);
+                    } while (person.heart > 0 && gen.enemy1.hp > 0);
+                    //Console.Clear();
+                    Console.WriteLine("Elite_Zombie:");
+                    do
+                    {
+                        keyInfo = Console.ReadKey();
+                        Battle.Battle.Enemy_do(person, gen.enemy2, keyInfo);
+                    } while (person.heart > 0 && gen.enemy2.hp > 0);
+                    //Console.Clear();
+                    Console.WriteLine("Skelet:");
+                    do
+                    {
+                        keyInfo = Console.ReadKey();
+                        Battle.Battle.Enemy_do(person, gen.enemy3, keyInfo);
+                    } while (person.heart > 0 && gen.enemy3.hp > 0);
+                    //Console.Clear();
+                    Console.WriteLine("Elite_skelet:");
+                    do
+                    {
+                        keyInfo = Console.ReadKey();
+                        Battle.Battle.Enemy_do(person, gen.enemy4, keyInfo);
+                    } while (person.heart > 0 && gen.enemy4.hp > 0);
+                    //Console.Clear();
+                    Console.WriteLine("Wizzard:");
+                    do
+                    {
+                        keyInfo = Console.ReadKey();
+                        Battle.Battle.Enemy_do(person, gen.enemy5, keyInfo);
+                    } while (person.heart > 0 && gen.enemy5.hp > 0);
+                    //Console.Clear();
+                    Console.WriteLine("Elite_Wizzard:");
+                    do
+                    {
+                        keyInfo = Console.ReadKey();
+                        Battle.Battle.Enemy_do(person, gen.enemy6, keyInfo);
+                    } while (person.heart > 0 && gen.enemy6.hp > 0);
+                }
 
                 if (person.type_map == 1 | (person.level % 3 == 0 && draw.map[person.coordinates[1] - 3, person.coordinates[0]] == '-'))
                 {

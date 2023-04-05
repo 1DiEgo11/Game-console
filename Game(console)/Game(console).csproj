@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Battle\Battle.csproj" />
     <ProjectReference Include="..\Character\Character.csproj" />
     <ProjectReference Include="..\Draw\Draw.csproj" />
     <ProjectReference Include="..\enemy\enemy.csproj" />
