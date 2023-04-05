@@ -100,7 +100,7 @@
     {
         public  Wood_Bow()
         {
-            this.Damage = 1.4;
+            this.Damage = 1.1;
             this.Type = "bow";
             this.Name = "Wood Bow";
         }
@@ -130,7 +130,7 @@
     {
         public Bible()
         {
-            this.Damage = 2;
+            this.Damage = 1.6;
             this.Type = "magic";
             this.Name = "Heretical book";
         }

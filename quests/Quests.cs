@@ -9,38 +9,68 @@ namespace quests
         {
             bool sword = true;
             string vot = "Вот, держи";
-            Console.WriteLine("1 - Iron Sword (+25% урона)\n2 - Sun Sword\n3 - Rainbow Sword\n4 - The god's sword\n5 - This is random, baby\n6 - назад");
+            Console.WriteLine("1 - Iron Sword (+25% урона) - 3 деняг\n2 - Sun Sword - 4 деняг\n3 - Rainbow Sword - 6 деняг\n4 - The god's sword - 1000 деняг\n5 - This is random, baby - 10 деняг\n6 - назад");
             while (sword)
             {
                 switch (Quests.GetIntInRange(6))
                 {
                     case 1:
-                        Console.WriteLine(vot + " железный меч.");
-                        person.inventory.weapons.Add(new Iron_sword());
+                        if (person.money - 3 > 0)
+                        {
+                            person.money -= 3;
+                            Console.WriteLine(vot + " железный меч.");
+                            person.inventory.weapons.Add(new Iron_sword());
+                        }
+                        else
+                            Console.WriteLine("У тебя не хватает деняг. Иди Сражайся друг мой!");
                         Console.ReadLine();
                         sword = false;
                         break;
                     case 2:
-                        Console.WriteLine(vot + " солнечный меч.");
-                        person.inventory.weapons.Add(new Sun_sword());
+                        if (person.money - 4 > 0)
+                        {
+                            person.money -= 4;
+                            Console.WriteLine(vot + " солнечный меч.");
+                            person.inventory.weapons.Add(new Sun_sword());
+                        }
+                        else
+                            Console.WriteLine("У тебя не хватает деняг. Иди Сражайся друг мой!");
                         Console.ReadLine();
                         sword = false;
                         break;
                     case 3:
-                        Console.WriteLine(vot + " радужный меч.");
-                        person.inventory.weapons.Add(new Rainbow_sword());
+                        if (person.money - 6 > 0)
+                        {
+                            person.money -= 6;
+                            Console.WriteLine(vot + " радужный меч.");
+                            person.inventory.weapons.Add(new Rainbow_sword());
+                        }
+                        else
+                            Console.WriteLine("У тебя не хватает деняг. Иди Сражайся друг мой!");
                         Console.ReadLine();
                         sword = false;
                         break;
                     case 4:
-                        Console.WriteLine(vot + " божественный меч. В нем хранится сила наисильнейших существ!");
-                        person.inventory.weapons.Add(new Dildo());
+                        if (person.money - 1000 > 0)
+                        {
+                            person.money -= 1000;
+                            Console.WriteLine(vot + " божественный меч. В нем хранится сила наисильнейших существ!");
+                            person.inventory.weapons.Add(new Dildo());
+                        }
+                        else
+                            Console.WriteLine("У тебя не хватает деняг. Иди Сражайся друг мой!");
                         Console.ReadLine();
                         sword = false;
                         break;
                     case 5:
-                        Console.WriteLine(vot + " меч бога рандома. Учти, им ты можешь излечить противника.");
-                        person.inventory.weapons.Add(new Billion_elements());
+                        if (person.money - 10 > 0)
+                        {
+                            person.money -= 10;
+                            Console.WriteLine(vot + " меч бога рандома. Учти, им ты можешь излечить противника.");
+                            person.inventory.weapons.Add(new Billion_elements());
+                        }
+                        else
+                            Console.WriteLine("У тебя не хватает деняг. Иди Сражайся друг мой!");
                         Console.ReadLine();
                         sword = false;
                         break;
@@ -55,31 +85,61 @@ namespace quests
         {
             bool armor = true;
             string eto = "Пожалуйста, вот твоя";
-            Console.WriteLine("1 - Iron armor\n2 - God's armor\n3 - Ebeishaya\n4 - назад");
+            Console.WriteLine("1 - Iron armor - 2 деняг\n2 - God's armor - 100 деняг\n3 - Ebeishaya - 50 деняг:)\n4 - Leather armor - 4 деняг\n5 - назад");
             while (armor)
             {
 
-                switch (Quests.GetIntInRange(4))
+                switch (Quests.GetIntInRange(5))
                 {
                     case 1:
-                        Console.WriteLine(eto + " броня-железка");
-                        person.inventory.armor.Add(new Iron_defence());
+                        if (person.money - 1 > 0)
+                        {
+                            person.money -= 1;
+                            Console.WriteLine(eto + " броня-железка");
+                            person.inventory.armor.Add(new Iron_defence());
+                        }
+                        else
+                            Console.WriteLine("У тебя не хватает деняг. Иди Сражайся друг мой!");
                         Console.ReadLine();
                         armor = false;
                         break;
                     case 2:
-                        Console.WriteLine(eto + " броня самого Господа Бога.");
-                        person.inventory.armor.Add(new God_armor());
+                        if (person.money - 100 > 0)
+                        {
+                            person.money -= 100;
+                            Console.WriteLine(eto + " броня самого Господа Бога.");
+                            person.inventory.armor.Add(new God_armor());
+                        } 
+                        else
+                            Console.WriteLine("У тебя не хватает деняг. Иди Сражайся друг мой!");
                         Console.ReadLine();
                         armor = false;
                         break;
                     case 3:
-                        Console.WriteLine(eto + " е******ая броня.");
-                        person.inventory.armor.Add(new Ebeishaya());
+                        if (person.money - 50 > 0)
+                        {
+                            person.money -= 50;
+                            Console.WriteLine(eto + " е******ая броня.");
+                            person.inventory.armor.Add(new Ebeishaya());
+                        }
+                        else
+                            Console.WriteLine("У тебя не хватает деняг. Иди Сражайся друг мой!");
                         Console.ReadLine();
                         armor = false;
                         break;
                     case 4:
+                        if (person.money - 4 > 0)
+                        {
+                            person.money -= 4;
+                            Console.WriteLine("Добро пожаловать в куб, мужик!");
+                            person.inventory.armor.Add(new Leather());
+                        }
+                        else
+                            Console.WriteLine("У тебя не хватает деняг. Иди Сражайся друг мой!");
+                        Console.ReadLine();
+                        armor = false;
+                        break;
+                    case 5:
                         armor = false;
                         break;
 
@@ -90,26 +150,44 @@ namespace quests
         {
             bool poizon = true;
             string vot = "Держи, это зелье";
-            Console.WriteLine("1 - Heal potion\n2 - Defend potion\n3 - Strenght potion\n4 - назад");
+            Console.WriteLine("1 - Heal potion - 3 деняг\n2 - Defend potion - 3 деняг\n3 - Strenght potion - 3 деняг\n4 - назад");
             while (poizon)
             {
                 switch (Quests.GetIntInRange(4))
                 {
                     case 1:
-                        Console.WriteLine(vot + " здоровья.");
-                        person.inventory.poizons.Add(new Heal());
+                        if (person.money - 3 > 0)
+                        {
+                            person.money -= 3;
+                            Console.WriteLine(vot + " здоровья.");
+                            person.inventory.poizons.Add(new Heal());
+                        }
+                        else
+                            Console.WriteLine("У тебя не хватает деняг. Иди Сражайся друг мой!");
                         Console.ReadLine();
                         poizon = false;
                         break;
                     case 2:
-                        Console.WriteLine(vot + " защиты.");
-                        person.inventory.poizons.Add(new Defend());
+                        if (person.money - 3 > 0)
+                        {
+                            person.money -= 3;
+                            Console.WriteLine(vot + " защиты.");
+                            person.inventory.poizons.Add(new Defend());
+                        }
+                        else
+                            Console.WriteLine("У тебя не хватает деняг. Иди Сражайся друг мой!");
                         Console.ReadLine();
                         poizon = false;
                         break;
                     case 3:
-                        Console.WriteLine(vot + " силы.");
-                        person.inventory.poizons.Add(new Strengh());
+                        if (person.money - 3 > 0)
+                        {
+                            person.money -= 3;
+                            Console.WriteLine(vot + " силы.");
+                            person.inventory.poizons.Add(new Strengh());
+                        }
+                        else
+                            Console.WriteLine("У тебя не хватает деняг. Иди Сражайся друг мой!");
                         Console.ReadLine();
                         poizon = false;
                         break;
@@ -125,26 +203,43 @@ namespace quests
         {
             bool bows = true;
             string vot = "Вот, держи";
-            Console.WriteLine("1 - Wood Bow\n2 - Crossbow\n3 - I don't know you\n4 - назад");
+            Console.WriteLine("1 - Wood Bow - 3 деняг\n2 - Crossbow - 7 деняг\n3 - I don't know you - 40 деняг\n4 - назад");
             while (bows)
             { 
                 switch (Quests.GetIntInRange(4))
                 {
                     case 1:
-                        Console.WriteLine(vot + " деревянный лук.");
-                        person.inventory.weapons.Add(new Wood_Bow());
+                        if (person.money - 2 > 0)
+                        {
+                            Console.WriteLine(vot + " деревянный лук.");
+                            person.inventory.weapons.Add(new Wood_Bow());
+                        }
+                        else
+                            Console.WriteLine("У тебя не хватает деняг. Иди Сражайся друг мой!");
                         Console.ReadLine();
                         bows = false;
                         break;
                     case 2:
-                        Console.WriteLine(vot + " арбалет.");
-                        person.inventory.weapons.Add(new Crossbow());
+                        if (person.money - 7 > 0)
+                        {
+                            person.money -= 7;
+                            Console.WriteLine(vot + " арбалет.");
+                            person.inventory.weapons.Add(new Crossbow());
+                        }
+                        else
+                            Console.WriteLine("У тебя не хватает деняг. Иди Сражайся друг мой!");
                         Console.ReadLine();
                         bows = false;
                         break;
                     case 3:
-                        Console.WriteLine(vot + " удивительный лук, название которого неизвестно.");
-                        person.inventory.weapons.Add(new Repair_you_computer_yourself());
+                        if (person.money - 40 > 0)
+                        {
+                            person.money -= 40;
+                            Console.WriteLine(vot + " удивительный лук, название которого неизвестно.");
+                            person.inventory.weapons.Add(new Repair_you_computer_yourself());
+                        }
+                        else
+                            Console.WriteLine("У тебя не хватает деняг. Иди Сражайся друг мой!");
                         Console.ReadLine();
                         bows = false;
                         break;
@@ -161,31 +256,47 @@ namespace quests
         {
             bool magic = true;
             string vot = "Вот, держи";
-            Console.WriteLine("1 - Magic book\n2 - Heretical book\n3 - Telepathically Attack\n4 - назад");
+            Console.WriteLine("1 - Magic book - 3 деняг\n2 - Heretical book - 6 деняг\n3 - Telepathically Attack - 20 деняг\n4 - назад");
             while (magic)
             {
 
                 switch (Quests.GetIntInRange(4))
                 {
                     case 1:
-                        Console.WriteLine(vot + " магическую книгу.");
-                        person.inventory.weapons.Add(new Magic_book());
+                        if (person.money - 3 > 0)
+                        {
+                            person.money -= 3;
+                            Console.WriteLine(vot + " магическую книгу.");
+                            person.inventory.weapons.Add(new Magic_book());
+                        }
+                        else
+                            Console.WriteLine("У тебя не хватает деняг. Иди Сражайся друг мой!");
                         Console.ReadLine();
                         magic = false;
                         break;
                     case 2:
-                        Console.WriteLine(vot + " книгу еретика.");
-                        person.inventory.weapons.Add(new Bible());
+                        if (person.money - 6 > 0)
+                        {
+                            Console.WriteLine(vot + " книгу еретика.");
+                            person.inventory.weapons.Add(new Bible());
+                        }
+                        else
+                            Console.WriteLine("У тебя не хватает деняг. Иди Сражайся друг мой!");
                         Console.ReadLine();
                         magic = false;
                         break;
                     case 3:
-                        Console.WriteLine(vot + ". Теперь ты умеешь пользоваться телепатией.");
-                        person.inventory.weapons.Add(new Fatronax());
+                        if (person.money - 20 > 0)
+                        {
+                            person.money -= 20;
+                            Console.WriteLine(vot + ". Теперь ты умеешь пользоваться телепатией.");
+                            person.inventory.weapons.Add(new Fatronax());
+                        }
+                        else
+                            Console.WriteLine("У тебя не хватает деняг. Иди Сражайся друг мой!");
                         Console.ReadLine();
                         magic = false;
                         break;
-
                     case 4:
                         magic = false;
                         break;
@@ -217,7 +328,7 @@ namespace quests
                         shop = true;
                         while (shop)
                         {
-                            Console.WriteLine("Так,смотри. Вот что у меня есть: (у тебя {0} деняг", person.money);
+                            Console.WriteLine("Так,смотри. Вот что у меня есть: (у тебя {0} деняг)", person.money);
                             Console.WriteLine("1 - мечи. 2 - броня. 3 - зелья. 4 - луки. 5 - волшебные зелья. 6 - назад.");
 
                             switch (Convert.ToInt32(Console.ReadLine()))
@@ -433,7 +544,7 @@ namespace quests
                 {
                     case 1:
                         Console.WriteLine("Красава,братан. Держи стопарик,выпьешь по дороге.");
-                        person.heart++;//+максхп
+                        person.inventory.poizons.Add(new Heal());//+максхп
                         Console.ReadLine();
                         break;
                     case 2:

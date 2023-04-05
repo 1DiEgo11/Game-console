@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Character\Character.csproj" />
+    <ProjectReference Include="..\quests\quests.csproj" />
   </ItemGroup>
 
 </Project>

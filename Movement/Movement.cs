@@ -85,7 +85,6 @@ namespace Movement
                 case ConsoleKey.I:
                     Console.Clear();
                     Inventoty.Inventory.Open_Inventory(person);
-                    Console.ReadLine();
                     break;
             }
         }
@@ -162,17 +161,7 @@ namespace Movement
             do
             {
                 Console.Clear();
-                Console.SetCursorPosition(0, 39);
-                if (person.type_of_person == 1)
-                    Console.WriteLine("Персонаж - ВОИН");
-                else if (person.type_of_person == 2)
-                    Console.WriteLine("Персонаж - ЛУЧНИК");
-                else
-                    Console.WriteLine("Персонаж - МАГ");
-
-                Console.WriteLine("HP - {0} (Броня - {1})", person.heart, person.armor);
-                Console.WriteLine("Деньги - {0}", person.money);
-                Console.WriteLine("Дамаг - {0}    {1}", person.damage, person.weapon_name);
+                
 
 
 
@@ -182,7 +171,7 @@ namespace Movement
 
                 
                 
-                keyInfo = Console.ReadKey();
+                
 
                 if (person.type_map == 1 | (person.level % 3 == 0 && draw.map[person.coordinates[1] - 3, person.coordinates[0]] == '-'))
                 {
@@ -210,8 +199,25 @@ namespace Movement
                     Console.WriteLine("Вы выйграли!!!!");
                     break;
                 }
+
+                Console.SetCursorPosition(0, 39);
+                if (person.type_of_person == 1)
+                    Console.WriteLine("Персонаж - ВОИН");
+                else if (person.type_of_person == 2)
+                    Console.WriteLine("Персонаж - ЛУЧНИК");
+                else
+                    Console.WriteLine("Персонаж - МАГ");
+
+                Console.WriteLine("HP - {0} (Броня - {1})", person.heart, person.armor);
+                Console.WriteLine("Деньги - {0}", person.money);
+                Console.WriteLine("Дамаг - {0}    {1}", person.damage, person.weapon_name);
+
+                keyInfo = Console.ReadKey();
                 if(keyInfo.Key == ConsoleKey.Escape)
                     Menu.Menu.Esc();
+
+                
+
             } while (true);
         }
     }
