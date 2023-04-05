@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -9,10 +9,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Character\Character.csproj" />
     <ProjectReference Include="..\Draw\Draw.csproj" />
-    <ProjectReference Include="..\enemy\enemy.csproj" />
-    <ProjectReference Include="..\GenerationMap\GenerationMap.csproj" />
-    <ProjectReference Include="..\quests\quests.csproj" />
-    <ProjectReference Include="..\weapon\weapon.csproj" />
   </ItemGroup>
 
 </Project>
