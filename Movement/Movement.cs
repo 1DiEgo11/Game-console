@@ -186,8 +186,8 @@ namespace Movement
                 else
                     Console.WriteLine("Ваш тип персонажа - МАГ");
                 Console.WriteLine($"{person.coordinates[0]}, {person.coordinates[1]}");
-                Console.WriteLine($"{boss.coordinates[0]}, {boss.coordinates[1]}");
-                Console.WriteLine($"{boss.coordinates[2]}, {boss.coordinates[3]}");
+                //Console.WriteLine($"{boss.coordinates[0]}, {boss.coordinates[1]}");
+                //Console.WriteLine($"{boss.coordinates[2]}, {boss.coordinates[3]}");
 
 
                 Console.SetCursorPosition(0, 2);
