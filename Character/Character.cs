@@ -5,12 +5,12 @@ namespace character
     public class Inventory
     {
         public List<Weapon> weapons;
-        public List<Poiton> poizons;
+        public List<Potion> poizons;
         public List<Weapon> armor;
         public Inventory()
         {
             this.weapons = new List<Weapon>();
-            this.poizons = new List<Poiton>();
+            this.poizons = new List<Potion>();
             this.armor = new List<Weapon>();
         }
     }
@@ -21,6 +21,7 @@ namespace character
         public int[] coordinates;
         public int money;
         public Inventory inventory;
+        public int mana;
         public string? weapon_type;
         public string? weapon_name;
         public string? poizon_type;
@@ -67,6 +68,7 @@ namespace character
         {
             this.type_of_person = 3;
             this.coordinates = coordinates;
+            this.mana = 100;
         }
     }
 }

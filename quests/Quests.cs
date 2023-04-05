@@ -184,7 +184,7 @@ namespace quests
                         {
                             person.money -= 3;
                             Console.WriteLine(vot + " силы.");
-                            person.inventory.poizons.Add(new Strengh());
+                            person.inventory.poizons.Add(new Strength());
                         }
                         else
                             Console.WriteLine("У тебя не хватает деняг. Иди Сражайся друг мой!");
@@ -428,12 +428,12 @@ namespace quests
 
             if (quest == "Сыграй на батарее")
             {
-                Console.WriteLine("Варианты: \n1 - пошел нахуй.\n2 - а ты настрой.\n3 - а ты  не ахуел ли.");
+                Console.WriteLine("Варианты: \n1 - Как ты себе это представляешь.\n2 - А ты настрой.\n3 - Мужик, давай без глупых вопросов.");
                 int optionBatareya = GetIntInRange(3);
                 switch (optionBatareya)
                 {
                     case 1:
-                        Console.WriteLine("Пизда тебе,сученыш мелкий.");
+                        Console.WriteLine("Щас увмдишь, как я себе это представляю.");
                         person.heart--;// - hp
                         Console.ReadLine();
                         break;
@@ -443,7 +443,7 @@ namespace quests
                         Console.ReadLine();
                         break;
                     case 3:
-                        Console.WriteLine("Ты че базаришь пидрила. Мы прям тут тебя выебем ща.");
+                        Console.WriteLine("Кто тут еще глупый. Разминайся.");
                         person.armor += 0.1;// минус армор
                         Console.ReadLine();
                         break;
@@ -452,8 +452,7 @@ namespace quests
             }
             else if (quest == "Держи розочку из бутылки.Зашей.")
             {
-                Console.WriteLine("Варианты: \n1 - Это невозможно,друг мой.\n2 - Как я тебе бутылку зашью? совсем ку-ку? \n " +
-                    "3 - А ты выверни на изнанку, я и зашью.");
+                Console.WriteLine("Варианты: \n1 - Это невозможно,друг мой.\n2 - Как я тебе бутылку зашью? совсем ку-ку? \n " +"3 - А ты выверни на изнанку, я и зашью.");
                 int optionRoza = GetIntInRange(3);
                 switch (optionRoza)
                 {

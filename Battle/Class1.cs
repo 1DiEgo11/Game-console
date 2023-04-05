@@ -52,14 +52,14 @@ namespace Battle
                 {
                     Battle.Miss(player, enemy, weapon);
                 }
-                else 
+                else
                 {
                     if (keyInfo.Key == ConsoleKey.Z)
                     {
                         //Battle.Attack(player, enemy, weapon);
                         enemy.hp -= player.damage * weapon.Damage;
                     }
-                        player.heart -= enemy.damage * weapon.Damage;
+                    player.heart -= enemy.damage * weapon.Damage;
                 }
             }
             else
@@ -71,7 +71,7 @@ namespace Battle
             }
 
         }
-        
+
     }
 
 }

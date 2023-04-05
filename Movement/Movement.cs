@@ -181,7 +181,7 @@ namespace Movement
             var person = new Person();//Создание переменной person, а потом ее переназначение
 
             //Для считывания клавиш
-            ConsoleKeyInfo keyInfo = Console.ReadKey();
+            
 
             switch (Quests.GetIntInRange(4))
             {
@@ -198,7 +198,7 @@ namespace Movement
                     return;
             }
 
-
+            ConsoleKeyInfo keyInfo = Console.ReadKey();
             person.inventory = new Inventory(); 
             
 
