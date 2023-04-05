@@ -1,30 +1,42 @@
-﻿namespace character
-{
+﻿using weapon;
 
+namespace character
+{
+    public class Inventory
+    {
+        public List<Weapon> weapons;
+        public List<Poiton> poizons;
+        public List<Weapon> armor;
+        public Inventory()
+        {
+            this.weapons = new List<Weapon>();
+            this.poizons = new List<Poiton>();
+            this.armor = new List<Weapon>();
+        }
+    }
     public class Person
     {
         public int type_of_person;
         public double heart;
         public int[] coordinates;
         public int money;
-        public string[]? inventory;
-        public int mana;
+        public Inventory inventory;
         public string? weapon_type;
+        public string? weapon_name;
+        public string? poizon_type;
+        public string? armor_name;
         public double damage;
-        public int armor;
+        public double armor;
         public int level;
         public int type_map;
 
-
-       
         public Person()
         {
             this.type_map = 1;
             this.type_of_person = 0;
-            this.heart = 6;
-            this.money = 0;
-            this.mana = 20;
-            this.damage = 2;
+            this.heart = 20;
+            this.money = 100;
+            this.damage = 10;
             this.armor = 0;
             this.level = 0; 
         }
@@ -55,8 +67,6 @@
         {
             this.type_of_person = 3;
             this.coordinates = coordinates;
-            this.mana = 100;
         }
     }
-
 }

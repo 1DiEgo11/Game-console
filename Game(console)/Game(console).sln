@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerationMap", "..\Generat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "quests", "..\quests\quests.csproj", "{0C23284D-E98D-4C09-80CD-33BD495AD77D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battle", "..\Battle\Battle.csproj", "{5C062955-A8FF-40BC-BCF1-808458A3E079}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventoty", "..\Inventoty\Inventoty.csproj", "{1C6E2D5B-CD22-40D4-BE4A-FF3D517EC2E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Menu", "..\Menu\Menu.csproj", "{3E5D0F42-2960-465E-97E8-FBD111FA3EE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,10 +61,14 @@ Global
 		{0C23284D-E98D-4C09-80CD-33BD495AD77D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C23284D-E98D-4C09-80CD-33BD495AD77D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C23284D-E98D-4C09-80CD-33BD495AD77D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5C062955-A8FF-40BC-BCF1-808458A3E079}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C062955-A8FF-40BC-BCF1-808458A3E079}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C062955-A8FF-40BC-BCF1-808458A3E079}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C062955-A8FF-40BC-BCF1-808458A3E079}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C6E2D5B-CD22-40D4-BE4A-FF3D517EC2E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C6E2D5B-CD22-40D4-BE4A-FF3D517EC2E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C6E2D5B-CD22-40D4-BE4A-FF3D517EC2E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C6E2D5B-CD22-40D4-BE4A-FF3D517EC2E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E5D0F42-2960-465E-97E8-FBD111FA3EE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E5D0F42-2960-465E-97E8-FBD111FA3EE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E5D0F42-2960-465E-97E8-FBD111FA3EE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E5D0F42-2960-465E-97E8-FBD111FA3EE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

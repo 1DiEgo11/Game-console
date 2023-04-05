@@ -11,6 +11,8 @@
     <ProjectReference Include="..\Draw\Draw.csproj" />
     <ProjectReference Include="..\enemy\enemy.csproj" />
     <ProjectReference Include="..\GenerationMap\GenerationMap.csproj" />
+    <ProjectReference Include="..\Inventoty\Inventoty.csproj" />
+    <ProjectReference Include="..\Menu\Menu.csproj" />
     <ProjectReference Include="..\quests\quests.csproj" />
     <ProjectReference Include="..\weapon\weapon.csproj" />
   </ItemGroup>

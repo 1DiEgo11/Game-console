@@ -3,8 +3,22 @@
     public class Weapon
     {
         public double Damage;
-        public string Type;
-        public string Name;
+        public string? Type;
+        public string? Name;
+
+        public Weapon()
+        {
+            Damage = 0;
+            Type = null;
+            Name = null;
+        }
+
+        public Weapon(double damage, string type, string name)
+        {
+            Damage = damage;
+            Type = type;
+            Name = name;
+        }
     }
 
     public class Potion
@@ -20,17 +34,17 @@
         {
             this.stat = 10;
             this.Type = "Heal";
-            this.Name = "Heal potion";
+            this.Name = "Heal poizon";
         }
     }
 
-    public class defend : Potion
+    public class Defend : Poiton
     {
-        public defend()
+        public Defend()
         {
             this.stat = 10;
             this.Type = "defend";
-            this.Name = "Defend potion";
+            this.Name = "Defend poizon";
         }
     }
 
@@ -40,7 +54,7 @@
         {
             this.stat = 1;
             this.Type = "strengh";
-            this.Name = "Strength potion";
+            this.Name = "Strengh poizon";
         }
     }
     public class Iron_sword : Weapon
@@ -82,9 +96,9 @@
         }
     }
 
-    public class Bow : Weapon
+    public class Wood_Bow : Weapon
     {
-        public Bow()
+        public  Wood_Bow()
         {
             this.Damage = 1.4;
             this.Type = "bow";

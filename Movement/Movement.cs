@@ -1,19 +1,19 @@
 ﻿using character;
 using Draw;
 using enemy;
+using Menu;
 using quests;
 
 namespace Movement
 {
     public class MovePerson
-    { 
-
+    {
         public static void ChillRoom(Person person, ConsoleKeyInfo keyInfo)
         {
             if (keyInfo.Key == ConsoleKey.E)
             {
                 Console.Clear();
-                Quests.QuestRoom();
+                Quests.QuestRoom(person);
             }
         }
 
@@ -22,28 +22,70 @@ namespace Movement
             switch (keyInfo.Key)
             {
                 case ConsoleKey.A:
-                    if (map[person.coordinates[1], person.coordinates[0] - 2] != '#' && map[person.coordinates[1], person.coordinates[0] - 2] != 'X')
+                    for (int i = 0; i < 4; i++)
                     {
-                        person.coordinates[0]--;
+                        if (map[person.coordinates[1] - 2, person.coordinates[0] - 1] != '#' && map[person.coordinates[1] - 2, person.coordinates[0] - 1] != 'X' &&
+                            map[person.coordinates[1] - 1, person.coordinates[0] - 2] != '#' && map[person.coordinates[1] - 1, person.coordinates[0] - 2] != 'X' &&
+                            map[person.coordinates[1], person.coordinates[0] - 2] != '#' && map[person.coordinates[1], person.coordinates[0] - 2] != 'X' &&
+                            map[person.coordinates[1] + 1, person.coordinates[0] - 1] != '#' && map[person.coordinates[1] + 1, person.coordinates[0] - 1] != 'X' &&
+                            map[person.coordinates[1] + 2, person.coordinates[0] - 1] != '#' && map[person.coordinates[1] + 2, person.coordinates[0] - 1] != 'X')
+                        {
+                            person.coordinates[0]--;
+                        }
                     }
                     break;
                 case ConsoleKey.D:
-                    if (map[person.coordinates[1], person.coordinates[0] + 3] != '#')
+                    for (int i = 0; i < 4; i++)
                     {
-                        person.coordinates[0]++;
+                        if (map[person.coordinates[1] - 2, person.coordinates[0] + 2] != '#' && map[person.coordinates[1] - 1, person.coordinates[0] + 3] != '#' &&
+                            map[person.coordinates[1], person.coordinates[0] + 3] != '#' && map[person.coordinates[1] + 1, person.coordinates[0] + 2] != '#' && map[person.coordinates[1] + 2, person.coordinates[0] + 2] != '#')
+                        {
+                            if (map[person.coordinates[1], person.coordinates[0] + 3] == '|') 
+                            { 
+                                person.coordinates[0]++;
+                                break;
+                            }
+                            else
+                                person.coordinates[0]++;
+                        }
                     }
                     break;
                 case ConsoleKey.W:
-                    if (map[person.coordinates[1] - 3, person.coordinates[0]] != '#')
+                    for (int i = 0; i < 2; i++)
                     {
-                        person.coordinates[1]--;
+                        if (map[person.coordinates[1] - 3, person.coordinates[0]] != '#' && map[person.coordinates[1] - 3, person.coordinates[0] + 1] != '#' &&
+                            map[person.coordinates[1] - 1, person.coordinates[0] - 1] != '#' && map[person.coordinates[1] - 1, person.coordinates[0] + 2] != '#')
+                        {
+                            if (map[person.coordinates[1] - 3, person.coordinates[0]] == '-')
+                            {
+                                person.coordinates[1]--;
+                                break;
+                            }
+                            else
+                                person.coordinates[1]--;
+                        }
                     }
                     break;
                 case ConsoleKey.S:
-                    if (map[person.coordinates[1] + 3, person.coordinates[0]] != '#')
+                    for (int i = 0; i < 2; i++)
                     {
-                        person.coordinates[1]++;
+                        if (map[person.coordinates[1] + 3, person.coordinates[0]] != '#' && map[person.coordinates[1] + 3, person.coordinates[0] + 1] != '#' &&
+                            map[person.coordinates[1] + 1, person.coordinates[0] - 1] != '#' && map[person.coordinates[1] + 1, person.coordinates[0] + 2] != '#')
+                        {
+                            if(map[person.coordinates[1] + 3, person.coordinates[0]] == '-')
+                            {
+                                person.coordinates[1]++;
+                                break;
+                            }
+                            else
+                                person.coordinates[1]++;
+                        }
                     }
+                    break;
+                case ConsoleKey.I:
+                    Console.Clear();
+                    Inventoty.Inventory.Open_Inventory(person);
+                    Console.ReadLine();
                     break;
             }
         }
@@ -125,37 +167,41 @@ namespace Movement
 
             Console.SetCursorPosition(37, 13);
             Console.WriteLine("ДЛЯ АДЕКВАТНОЙ РАБОТЫ НАЖМИТЕ ALT + ENTER");
-            Thread.Sleep(3000);
+            Thread.Sleep(2000);
             Console.Clear();
 
             int[] coordinates = { 5, 22 };//Начальные координаты гг
 
-            Console.WriteLine("Для выхода нажмите - Escape");
+            Console.WriteLine("Для выхода нажмите - 4");
             Console.SetCursorPosition(0, 3);
             Console.WriteLine("Выберите героя:");
-            Console.WriteLine("1. Воин (Нажмите Q для выбора)");
-            Console.WriteLine("2. Лучник (Нажмите W для выбора)");
-            Console.WriteLine("3. Маг (Нажмите E для выбора)");
+            Console.WriteLine("1. Воин (Нажмите 1 для выбора)");
+            Console.WriteLine("2. Лучник (Нажмите 2 для выбора)");
+            Console.WriteLine("3. Маг (Нажмите 3 для выбора)");
             
             var person = new Person();//Создание переменной person, а потом ее переназначение
 
             //Для считывания клавиш
             ConsoleKeyInfo keyInfo = Console.ReadKey();
 
-            switch (keyInfo.Key)
+            switch (Quests.GetIntInRange(4))
             {
-                case ConsoleKey.Q:
+                case 1:
                     person = new Warrior(coordinates);
                     break;
-                case ConsoleKey.W:
+                case 2:
                     person = new Archer(coordinates);
                     break;
-                case ConsoleKey.E:
+                case 3:
                     person = new Mage(coordinates);
                     break;
-                case ConsoleKey.Escape:
+                case 4:
                     return;
             }
+
+
+            person.inventory = new Inventory(); 
+            
 
             Console.CursorVisible = false;
 
@@ -175,18 +221,18 @@ namespace Movement
                 //Console.WriteLine($"{boss.coordinates[2]}, {boss.coordinates[3]}");
 
 
-                ;
-                Console.WriteLine("HP - {0} (+{1})", person.heart, person.armor);
+                Console.WriteLine("HP - {0} (Броня - {1})", person.heart, person.armor);
                 Console.WriteLine("Деньги - {0}", person.money);
-                Console.Write("{0} {1}", person.coordinates[0], person.coordinates[1] + 3);
+                Console.WriteLine("Дамаг - {0}    {1}", person.damage, person.weapon_name);
 
 
-
-                GenerationMap.GenerationMap.Map(person, draw);
-                Console.Write(draw.map[10,10]);
 
                 Move(person, keyInfo, draw.map);
+                GenerationMap.GenerationMap.Map(person, draw);
                 DrawPerson.Draw_Person(person.coordinates);
+
+                
+                
                 keyInfo = Console.ReadKey();
 
                 if (person.type_map == 1 | (person.level % 3 == 0 && draw.map[person.coordinates[1] - 3, person.coordinates[0]] == '-'))
@@ -215,21 +261,9 @@ namespace Movement
                     Console.WriteLine("Вы выйграли!!!!");
                     break;
                 }
-
-                Console.SetCursorPosition(0, 39);
-                if (person.type_of_person == 1)
-                    Console.WriteLine("Персонаж - ВОИН");
-                else if (person.type_of_person == 2)
-                    Console.WriteLine("Персонаж - ЛУЧНИК");
-                else
-                    Console.WriteLine("Персонаж - МАГ");
-
-                Console.SetCursorPosition(0, 2);
-                Console.WriteLine("HP - {0} (+{1})", person.heart, person.armor);
-                Console.WriteLine("Деньги - {0}", person.money);
-                Console.Write("{0} {1}", person.coordinates[0], person.coordinates[1] + 3);
-
-            } while (keyInfo.Key != ConsoleKey.Escape);
+                if(keyInfo.Key == ConsoleKey.Escape)
+                    Menu.Menu.Esc();
+            } while (true);
         }
     }
 }
