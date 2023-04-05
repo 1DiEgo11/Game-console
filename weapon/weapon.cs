@@ -21,14 +21,14 @@
         }
     }
 
-    public class Poiton
+    public class Potion
     {
         public string Type;
         public string Name;
         public int stat;
     }
 
-    public class Heal : Poiton
+    public class Heal : Potion
     {
         public Heal()
         {
@@ -48,9 +48,9 @@
         }
     }
 
-    public class Strengh : Poiton
+    public class Strength : Potion
     {
-        public Strengh()
+        public Strength()
         {
             this.stat = 1;
             this.Type = "strengh";
@@ -92,7 +92,7 @@
         {
             this.Damage = 999999;
             this.Type = "sword";
-            this.Name = "The god sword";
+            this.Name = "The god's sword";
         }
     }
 
@@ -152,7 +152,7 @@
         {
             this.Damage = 0.85;
             this.Type = "defence";
-            this.Name = "Iron defence";
+            this.Name = "Iron armor";
         }
     }
 
@@ -162,7 +162,7 @@
         {
             this.Damage = 0.01;
             this.Type = "defence";
-            this.Name = "God armor";
+            this.Name = "God's armor";
         }
     }
 
