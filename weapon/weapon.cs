@@ -38,7 +38,7 @@
         }
     }
 
-    public class Defend : Poiton
+    public class Defend : Potion
     {
         public Defend()
         {

@@ -3,6 +3,8 @@ using Draw;
 using enemy;
 using Menu;
 using quests;
+using Battle;
+using Animation_Enemys;
 
 namespace Movement
 {
@@ -204,7 +206,8 @@ namespace Movement
             
 
             Console.CursorVisible = false;
-
+            int coun = 0;
+            Generate_Enemy gen = new Generate_Enemy(person);
             //Передвижение по консоли
             do
             {
@@ -217,24 +220,68 @@ namespace Movement
                 else
                     Console.WriteLine("Ваш тип персонажа - МАГ");
                 Console.WriteLine($"{person.coordinates[0]}, {person.coordinates[1]}");
-                //Console.WriteLine($"{boss.coordinates[0]}, {boss.coordinates[1]}");
-                //Console.WriteLine($"{boss.coordinates[2]}, {boss.coordinates[3]}");
 
 
                 Console.WriteLine("HP - {0} (Броня - {1})", person.heart, person.armor);
                 Console.WriteLine("Деньги - {0}", person.money);
                 Console.WriteLine("Дамаг - {0}    {1}", person.damage, person.weapon_name);
 
-
-
                 Move(person, keyInfo, draw.map);
                 GenerationMap.GenerationMap.Map(person, draw);
                 DrawPerson.Draw_Person(person.coordinates);
+                //Generate_Enemy gen = new Generate_Enemy(person);
+                
+                if (keyInfo.Key == ConsoleKey.B)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Zombie:");
+                    
+                    do
+                    {
+                        keyInfo = Console.ReadKey();
+                        Battle.Battle.Enemy_do(person, gen.enemy1, keyInfo);
+                    } while (person.heart > 0 && gen.enemy1.hp > 0);
+                    //Console.Clear();
+                    Console.WriteLine("Elite_Zombie:");
+                    do
+                    {
+                        keyInfo = Console.ReadKey();
+                        Battle.Battle.Enemy_do(person, gen.enemy2, keyInfo);
+                    } while (person.heart > 0 && gen.enemy2.hp > 0);
+                    //Console.Clear();
+                    Console.WriteLine("Skelet:");
+                    do
+                    {
+                        keyInfo = Console.ReadKey();
+                        Battle.Battle.Enemy_do(person, gen.enemy3, keyInfo);
+                    } while (person.heart > 0 && gen.enemy3.hp > 0);
+                    //Console.Clear();
+                    Console.WriteLine("Elite_skelet:");
+                    do
+                    {
+                        keyInfo = Console.ReadKey();
+                        Battle.Battle.Enemy_do(person, gen.enemy4, keyInfo);
+                    } while (person.heart > 0 && gen.enemy4.hp > 0);
+                    //Console.Clear();
+                    Console.WriteLine("Wizzard:");
+                    do
+                    {
+                        keyInfo = Console.ReadKey();
+                        Battle.Battle.Enemy_do(person, gen.enemy5, keyInfo);
+                    } while (person.heart > 0 && gen.enemy5.hp > 0);
+                    //Console.Clear();
+                    Console.WriteLine("Elite_Wizzard:");
+                    do
+                    {
+                        keyInfo = Console.ReadKey();
+                        Battle.Battle.Enemy_do(person, gen.enemy6, keyInfo);
+                    } while (person.heart > 0 && gen.enemy6.hp > 0);
+                }
+                
+                
 
-                
-                
                 keyInfo = Console.ReadKey();
-
+               
                 if (person.type_map == 1 | (person.level % 3 == 0 && draw.map[person.coordinates[1] - 3, person.coordinates[0]] == '-'))
                 {
                     if(person.type_map != 1)
@@ -254,8 +301,9 @@ namespace Movement
                     person.coordinates[1] = 22;
                     person.level++;
                     person.type_map = GenerationMap.GenerationMap.Random_map(person.type_map);
+                    
                 }
-                
+               
                 if (person.level == 21)
                 {
                     Console.WriteLine("Вы выйграли!!!!");
