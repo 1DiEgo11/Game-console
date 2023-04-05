@@ -45,31 +45,31 @@ namespace GenerationMap
             else return 0;
             
         }
-        public static void Map(Person person, int[,] door)
+        public static void Map(Person person, DrawMap draw)
         {
             if (person.type_map == 1)
             {
-                DrawMap.FirstMap(person, door);
+                DrawMap.FirstMap(person, draw);
             }
             if (person.type_map == 2)
             {
-                DrawMap.SecondMap(person, door);
+                DrawMap.SecondMap(person, draw);
             }
             if (person.type_map == 3)
             {
-                DrawMap.ThirdMap(person, door);
+                DrawMap.ThirdMap(person, draw);
             }
             if (person.type_map == 4)
             {
-                DrawMap.FouthMap(person, door);
+                DrawMap.FouthMap(person, draw);
             }
             if (person.type_map == 5)
             {
-                DrawMap.FifthMap(person, door);
+                DrawMap.FifthMap(person, draw);
             }
             if (person.type_map == 6)
             {
-                DrawMap.SixMap(person, door);
+                DrawMap.SixMap(person, draw);
             }
         }
     }
