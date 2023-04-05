@@ -2,4 +2,4 @@
 
 MovePerson.Game();
 Console.Clear();
-Console.WriteLine("До скорой встречи!!!");
+Console.WriteLine("!До скорой встречи!!!");

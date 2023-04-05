@@ -1,36 +1,47 @@
-﻿namespace quests
+﻿using character;
+using weapon;
+namespace quests
 {
     public class ShoppingMall
     {
 
-        public static void Swords()
+        public static void Swords(Person person)
         {
             bool sword = true;
             string vot = "Вот, держи";
             Console.WriteLine("1 - Iron Sword (+25% урона)\n2 - Sun Sword\n3 - Rainbow Sword\n4 - The god's sword\n5 - This is random, baby\n6 - назад");
             while (sword)
             {
-
                 switch (Quests.GetIntInRange(6))
                 {
                     case 1:
                         Console.WriteLine(vot + " железный меч.");
+                        person.inventory.weapons.Add(new Iron_sword());
+                        Console.ReadLine();
                         sword = false;
                         break;
                     case 2:
                         Console.WriteLine(vot + " солнечный меч.");
+                        person.inventory.weapons.Add(new Sun_sword());
+                        Console.ReadLine();
                         sword = false;
                         break;
                     case 3:
                         Console.WriteLine(vot + " радужный меч.");
+                        person.inventory.weapons.Add(new Rainbow_sword());
+                        Console.ReadLine();
                         sword = false;
                         break;
                     case 4:
                         Console.WriteLine(vot + " божественный меч. В нем хранится сила наисильнейших существ!");
+                        person.inventory.weapons.Add(new Dildo());
+                        Console.ReadLine();
                         sword = false;
                         break;
                     case 5:
                         Console.WriteLine(vot + " меч бога рандома. Учти, им ты можешь излечить противника.");
+                        person.inventory.weapons.Add(new Billion_elements());
+                        Console.ReadLine();
                         sword = false;
                         break;
                     case 6:
@@ -39,9 +50,8 @@
 
                 }
             }
-
         }
-        public static void Armor()
+        public static void Armor(Person person)
         {
             bool armor = true;
             string eto = "Пожалуйста, вот твоя";
@@ -49,18 +59,24 @@
             while (armor)
             {
 
-                switch (Quests.GetIntInRange(3))
+                switch (Quests.GetIntInRange(4))
                 {
                     case 1:
                         Console.WriteLine(eto + " броня-железка");
+                        person.inventory.armor.Add(new Iron_defence());
+                        Console.ReadLine();
                         armor = false;
                         break;
                     case 2:
                         Console.WriteLine(eto + " броня самого Господа Бога.");
+                        person.inventory.armor.Add(new God_armor());
+                        Console.ReadLine();
                         armor = false;
                         break;
                     case 3:
                         Console.WriteLine(eto + " е******ая броня.");
+                        person.inventory.armor.Add(new Ebeishaya());
+                        Console.ReadLine();
                         armor = false;
                         break;
                     case 4:
@@ -70,25 +86,31 @@
                 }
             }
         }
-        public static void Poizon()
+        public static void Poizon(Person person)
         {
             bool poizon = true;
             string vot = "Держи, это зелье";
             Console.WriteLine("1 - Heal potion\n2 - Defend potion\n3 - Strenght potion\n4 - назад");
             while (poizon)
             {
-                switch (Quests.GetIntInRange(3))
+                switch (Quests.GetIntInRange(4))
                 {
                     case 1:
                         Console.WriteLine(vot + " здоровья.");
+                        person.inventory.poizons.Add(new Heal());
+                        Console.ReadLine();
                         poizon = false;
                         break;
                     case 2:
                         Console.WriteLine(vot + " защиты.");
+                        person.inventory.poizons.Add(new Defend());
+                        Console.ReadLine();
                         poizon = false;
                         break;
                     case 3:
                         Console.WriteLine(vot + " силы.");
+                        person.inventory.poizons.Add(new Strengh());
+                        Console.ReadLine();
                         poizon = false;
                         break;
                     case 4:
@@ -99,26 +121,31 @@
 
 
         }
-        public static void Bows()
+        public static void Bows(Person person)
         {
             bool bows = true;
             string vot = "Вот, держи";
             Console.WriteLine("1 - Wood Bow\n2 - Crossbow\n3 - I don't know you\n4 - назад");
             while (bows)
-            {
-
-                switch (Quests.GetIntInRange(6))
+            { 
+                switch (Quests.GetIntInRange(4))
                 {
                     case 1:
                         Console.WriteLine(vot + " деревянный лук.");
+                        person.inventory.weapons.Add(new Wood_Bow());
+                        Console.ReadLine();
                         bows = false;
                         break;
                     case 2:
                         Console.WriteLine(vot + " арбалет.");
+                        person.inventory.weapons.Add(new Crossbow());
+                        Console.ReadLine();
                         bows = false;
                         break;
                     case 3:
                         Console.WriteLine(vot + " удивительный лук, название которого неизвестно.");
+                        person.inventory.weapons.Add(new Repair_you_computer_yourself());
+                        Console.ReadLine();
                         bows = false;
                         break;
 
@@ -130,7 +157,7 @@
             }
 
         }
-        public static void Magic()
+        public static void Magic(Person person)
         {
             bool magic = true;
             string vot = "Вот, держи";
@@ -138,18 +165,24 @@
             while (magic)
             {
 
-                switch (Quests.GetIntInRange(6))
+                switch (Quests.GetIntInRange(4))
                 {
                     case 1:
                         Console.WriteLine(vot + " магическую книгу.");
+                        person.inventory.weapons.Add(new Magic_book());
+                        Console.ReadLine();
                         magic = false;
                         break;
                     case 2:
                         Console.WriteLine(vot + " книгу еретика.");
+                        person.inventory.weapons.Add(new Bible());
+                        Console.ReadLine();
                         magic = false;
                         break;
                     case 3:
                         Console.WriteLine(vot + ". Теперь ты умеешь пользоваться телепатией.");
+                        person.inventory.weapons.Add(new Fatronax());
+                        Console.ReadLine();
                         magic = false;
                         break;
 
@@ -165,7 +198,7 @@
     public class Quests
 
     {
-        public static void QuestRoom()
+        public static void QuestRoom(Person person)
         {
             bool store = true;
             bool shop = true;
@@ -177,7 +210,7 @@
                 switch (GetIntInRange(3))
                 {
                     case 1:
-                        Quests.switchQuests();
+                        Quests.switchQuests(person);
                         store = false;
                         break;
                     case 2:
@@ -190,35 +223,32 @@
                             switch (Convert.ToInt32(Console.ReadLine()))
                             {
                                 case 1:
-                                    ShoppingMall.Swords();
-
+                                    ShoppingMall.Swords(person);
                                     Console.Clear();
                                     shop = false;
                                     break;
                                 case 2:
-                                    ShoppingMall.Armor();
+                                    ShoppingMall.Armor(person);
 
                                     Console.Clear();
                                     shop = false;
                                     break;
                                 case 3:
-                                    ShoppingMall.Poizon();
+                                    ShoppingMall.Poizon(person);
                                     Console.Clear();
                                     shop = false;
                                     break;
                                 case 4:
-                                    ShoppingMall.Bows();
+                                    ShoppingMall.Bows(person);
                                     Console.Clear();
                                     shop = false;
                                     break;
                                 case 5:
-                                    ShoppingMall.Magic();
+                                    ShoppingMall.Magic(person);
                                     Console.Clear();
                                     shop = false;
                                     break;
                                 case 6:
-
-
                                     Console.Clear();
                                     shop = false;
                                     break;
@@ -228,6 +258,7 @@
                         break;
                     case 3:
                         Console.WriteLine("До свидания! Удачной дороги.");
+                        Thread.Sleep(800);
                         store = false;
                         break;
 
@@ -276,7 +307,7 @@
             }
 
         }
-        public static void switchQuests()
+        public static void switchQuests(Person person)
         {
             Random rnd = new Random();
             string quest = Quest(rnd.Next(1, 5));
@@ -291,13 +322,19 @@
                 switch (optionBatareya)
                 {
                     case 1:
-                        Console.WriteLine("Пизда тебе,сученыш мелкий."); // - hp
+                        Console.WriteLine("Пизда тебе,сученыш мелкий.");
+                        person.heart--;// - hp
+                        Console.ReadLine();
                         break;
                     case 2:
-                        Console.WriteLine("Молодец. Не опешил перед мужиками. Вот, держи, это тебе."); //ружбайка, зелье, любая залупа
+                        Console.WriteLine("Молодец. Не опешил перед мужиками. Вот, держи, это тебе."); 
+                        person.inventory.weapons.Add(new Iron_sword());
+                        Console.ReadLine();
                         break;
                     case 3:
-                        Console.WriteLine("Ты че базаришь пидрила. Мы прям тут тебя выебем ща."); // минус армор
+                        Console.WriteLine("Ты че базаришь пидрила. Мы прям тут тебя выебем ща.");
+                        person.armor += 0.1;// минус армор
+                        Console.ReadLine();
                         break;
 
                 }
@@ -310,15 +347,20 @@
                 switch (optionRoza)
                 {
                     case 1:
-                        Console.WriteLine("Не прав ты. За неправильный ответ тебе - этой розочкой и пропишем."); //-hp
+                        Console.WriteLine("Не прав ты. За неправильный ответ тебе - этой розочкой и пропишем.");
+                        person.heart--;//-hp
+                        Console.ReadLine();
                         break;
                     case 2:
-                        Console.WriteLine("А вот так. Легко и просто, не понимаешь, значит глупый, с нами не уживешься. *угрожая розочкой* Выворачивай карманы!!!!"); // -rnd зелье или монетки
+                        Console.WriteLine("А вот так. Легко и просто, не понимаешь, значит глупый, с нами не уживешься. *угрожая розочкой* Выворачивай карманы!!!!");
+                        person.money -= 5;// -rnd зелье или монетки
+                        Console.ReadLine();
                         break;
                     case 3:
-                        Console.WriteLine("Красава, братишка. Сразу видно, логика у тебя развита хорошо. Держи, ступай с миром.");//можно забабахать класс оружия с названием розочка
+                        Console.WriteLine("Красава, братишка. Сразу видно, логика у тебя развита хорошо. Держи, ступай с миром.");
+                        person.inventory.weapons.Add(new Tomorrow_by_the_second());//можно забабахать класс оружия с названием розочка ////а можно и не забабахать) 
+                        Console.ReadLine();
                         break;
-
                 }
             }
             else if (quest == "Вилкой в глаз или в ж***у раз?")
@@ -329,16 +371,24 @@
                 switch (optionVilka)
                 {
                     case 1:
-                        Console.WriteLine("ООО, так ты у нас из петушар. Ну,готовься"); //-armor
+                        Console.WriteLine("ООО, так ты у нас из петушар. Ну,готовься");
+                        person.armor += 0.1;//-armor
+                        Console.ReadLine();
                         break;
                     case 2:
-                        Console.WriteLine("Вилки конечно нет, но двоечку в глаз щас поймаешь"); // -хп
+                        Console.WriteLine("Вилки конечно нет, но двоечку в глаз щас поймаешь");
+                        person.heart--;// -хп
+                        Console.ReadLine();
                         break;
                     case 3:
-                        Console.WriteLine("Правильный ответ. Молодец. Держи.");//Зелье
+                        Console.WriteLine("Правильный ответ. Молодец. Держи.");
+                        person.inventory.poizons.Add(new Heal());//Зелье
+                        Console.ReadLine();
                         break;
                     case 4:
-                        Console.WriteLine("Поймал ты нас. Держи тебе заточку, сможешь от других мудил отбиваться"); // ружбайка
+                        Console.WriteLine("Поймал ты нас. Держи тебе заточку, сможешь от других мудил отбиваться");
+                        person.inventory.weapons.Add(new Magic_book());// ружбайка
+                        Console.ReadLine();
                         break;
 
                 }
@@ -351,16 +401,25 @@
                 switch (Convert.ToInt32(Console.ReadKey().ToString()))
                 {
                     case 1:
-                        Console.WriteLine("Щас мы тебе рот намылим."); //-максхп
+                        Console.WriteLine("Щас мы тебе рот намылим.");
+                        person.heart--;//-максхп
+                        Console.ReadLine();
                         break;
                     case 2:
-                        Console.WriteLine("Так ты петушок галимый. Пацаны, птичка попалась в клетку."); // -армор
+                        Console.WriteLine("Так ты петушок галимый. Пацаны, птичка попалась в клетку.");
+                        person.armor = 0;// -армор
+                        Console.ReadLine();
                         break;
                     case 3:
-                        Console.WriteLine("Прав ты. Держи,хлебни чифирку, крепче станешь.");// +макс хп(просто захил)
+                        Console.WriteLine("Прав ты. Держи,хлебни чифирку, крепче станешь.");
+                        person.heart++;// +макс хп(просто захил)
+                        Console.ReadLine();
                         break;
                     case 4:
-                        Console.WriteLine("Готовь ж**у и рот, щас будем мылить и обмывать, петушок."); // -макс хп - армор
+                        Console.WriteLine("Готовь ж**у и рот, щас будем мылить и обмывать, петушок.");
+                        person.heart--;
+                        person.armor = 0;// -макс хп - армор
+                        Console.ReadLine();
                         break;
 
                 }
@@ -373,22 +432,28 @@
                 switch (optionZhopa)
                 {
                     case 1:
-                        Console.WriteLine("Красава,братан. Держи стопарик,выпьешь по дороге."); //-максхп
+                        Console.WriteLine("Красава,братан. Держи стопарик,выпьешь по дороге.");
+                        person.heart++;//+максхп
+                        Console.ReadLine();
                         break;
                     case 2:
-                        Console.WriteLine("Ну давай,расчехляйся."); // -армор
+                        Console.WriteLine("Ну давай,расчехляйся.");
+                        person.armor += 0.1;// -армор
+                        Console.ReadLine();
                         break;
                     case 3:
-                        Console.WriteLine("Опана,сразу задняя, так значит либо маму не любишь, либо петух.");// -maxhp-armor
+                        Console.WriteLine("Опана,сразу задняя, так значит либо маму не любишь, либо петух.");
+                        person.heart--;
+                        person.armor = 0;// -maxhp-armor
+                        Console.ReadLine();
                         break;
                     case 4:
-                        Console.WriteLine("Не по пацански это - маму продавать."); // -макс хп
+                        Console.WriteLine("Не по пацански это - маму продавать.");
+                        person.heart--;// -макс хп
+                        Console.ReadLine();
                         break;
-
-
                 }
             }
         }
     }
-
 }
