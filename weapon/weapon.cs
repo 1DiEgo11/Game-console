@@ -86,9 +86,9 @@
         }
     }
 
-    public class Dildo : Weapon
+    public class Gods_sword : Weapon
     {
-        public Dildo()
+        public Gods_sword()
         {
             this.Damage = 999999;
             this.Type = "sword";

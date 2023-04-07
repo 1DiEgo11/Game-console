@@ -229,8 +229,13 @@ namespace Movement
                 Move(person, keyInfo, draw.map);
                 GenerationMap.GenerationMap.Map(person, draw);
                 DrawPerson.Draw_Person(person.coordinates);
-                //Generate_Enemy gen = new Generate_Enemy(person);
-                
+                gen.enemy1.draw(gen.enemy1.coordinates[0], gen.enemy1.coordinates[1]);
+                gen.enemy2.draw(gen.enemy2.coordinates[0], gen.enemy2.coordinates[1]);
+                gen.enemy3.draw(gen.enemy3.coordinates[0], gen.enemy3.coordinates[1]);
+                gen.enemy4.draw(gen.enemy4.coordinates[0], gen.enemy4.coordinates[1]);
+                gen.enemy5.draw(gen.enemy5.coordinates[0], gen.enemy5.coordinates[1]);
+                gen.enemy6.draw(gen.enemy6.coordinates[0], gen.enemy6.coordinates[1]);
+
                 if (keyInfo.Key == ConsoleKey.B)
                 {
                     Console.Clear();
@@ -241,35 +246,35 @@ namespace Movement
                         keyInfo = Console.ReadKey();
                         Battle.Battle.Enemy_do(person, gen.enemy1, keyInfo);
                     } while (person.heart > 0 && gen.enemy1.hp > 0);
-                    //Console.Clear();
+                    Console.Clear();
                     Console.WriteLine("Elite_Zombie:");
                     do
                     {
                         keyInfo = Console.ReadKey();
                         Battle.Battle.Enemy_do(person, gen.enemy2, keyInfo);
                     } while (person.heart > 0 && gen.enemy2.hp > 0);
-                    //Console.Clear();
+                    Console.Clear();
                     Console.WriteLine("Skelet:");
                     do
                     {
                         keyInfo = Console.ReadKey();
                         Battle.Battle.Enemy_do(person, gen.enemy3, keyInfo);
                     } while (person.heart > 0 && gen.enemy3.hp > 0);
-                    //Console.Clear();
+                    Console.Clear();
                     Console.WriteLine("Elite_skelet:");
                     do
                     {
                         keyInfo = Console.ReadKey();
                         Battle.Battle.Enemy_do(person, gen.enemy4, keyInfo);
                     } while (person.heart > 0 && gen.enemy4.hp > 0);
-                    //Console.Clear();
+                    Console.Clear();
                     Console.WriteLine("Wizzard:");
                     do
                     {
                         keyInfo = Console.ReadKey();
                         Battle.Battle.Enemy_do(person, gen.enemy5, keyInfo);
                     } while (person.heart > 0 && gen.enemy5.hp > 0);
-                    //Console.Clear();
+                    Console.Clear();
                     Console.WriteLine("Elite_Wizzard:");
                     do
                     {

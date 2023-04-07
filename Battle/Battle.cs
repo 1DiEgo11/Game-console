@@ -41,7 +41,9 @@ namespace Battle
         }
 
         public static void Enemy_do(Person player, Enemy enemy, ConsoleKeyInfo keyInfo)
-        {   
+
+        {
+            Animation.GG(keyInfo);
             Console.WriteLine(enemy.hp);
             Console.WriteLine(player.heart);
             Random random = new Random();
@@ -70,6 +72,7 @@ namespace Battle
                     Battle.Enemy_miss(player, enemy);
                 }
             }
+            
             if (enemy.type_of_person < 3) { Animation.AnimationEnemy1(); }
             else if (enemy.type_of_person == 3 || enemy.type_of_person == 4 ) { Animation.AnimationEnemy2(); }
             else if (enemy.type_of_person == 5 || enemy.type_of_person == 6) { Animation.AnimationEnemy3(); }

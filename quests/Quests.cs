@@ -34,7 +34,7 @@ namespace quests
                         break;
                     case 4:
                         Console.WriteLine(vot + " божественный меч. В нем хранится сила наисильнейших существ!");
-                        person.inventory.weapons.Add(new Dildo());
+                        person.inventory.weapons.Add(new Gods_sword());
                         Console.ReadLine();
                         sword = false;
                         break;
