@@ -40,14 +40,20 @@ namespace Menu
                 Console.SetCursorPosition(96, 21);
                 Console.Write("ОБУЧЕНИЕ");
                 Console.SetCursorPosition(95, 22);
-                Console.Write("(press <h>)");
+                Console.Write("(press <H>)");
                 Console.SetCursorPosition(98, 24);
-                Console.Write("ВЫХОД");
+                Console.Write("НАЗАД");
                 Console.SetCursorPosition(95, 25);
-                Console.Write("(press <n>)");
+                Console.Write("(press <B>)");
+                Console.SetCursorPosition(98, 27);
+                Console.Write("ВЫХОД");
+                Console.SetCursorPosition(95, 28);
+                Console.Write("(press <Escape>)");
                 ConsoleKeyInfo Menu = Console.ReadKey();
                 switch (Menu.Key)
                 {
+                    case ConsoleKey.B:
+                        return;
                     case ConsoleKey.H:
                         Training();
                         Console.ReadKey();

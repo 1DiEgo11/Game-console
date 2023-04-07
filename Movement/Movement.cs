@@ -4,21 +4,12 @@ using enemy;
 using Menu;
 using quests;
 using Battle;
-using Animation_Enemys;
+using TextOutput;
 
 namespace Movement
 {
     public class MovePerson
     {
-        public static void ChillRoom(Person person, ConsoleKeyInfo keyInfo)
-        {
-            if (keyInfo.Key == ConsoleKey.E)
-            {
-                Console.Clear();
-                Quests.QuestRoom(person);
-            }
-        }
-
         public static void Move(Person person, ConsoleKeyInfo keyInfo, char[,] map)
         {
             switch (keyInfo.Key)
@@ -131,6 +122,7 @@ namespace Movement
             }
             return 0; //переделать на хитбоксы
         }
+
         public static void Move_enemy(Enemy enemy) {
             Random random = new Random();
             int enemym = random.Next(0, 2);
@@ -160,23 +152,15 @@ namespace Movement
 
         public static void Game()
         {
-            DrawMap draw = new DrawMap();
-            int last_type_map = 0;
+            Console.CursorVisible = false;
+            
 
-            Console.SetCursorPosition(37, 13);
-            Console.WriteLine("ДЛЯ АДЕКВАТНОЙ РАБОТЫ НАЖМИТЕ ALT + ENTER");
-            Thread.Sleep(2000);
-            Console.Clear();
+            Text.First_Text();
 
             int[] coordinates = { 5, 22 };//Начальные координаты гг
 
-            Console.WriteLine("Для выхода нажмите - 4");
-            Console.SetCursorPosition(0, 3);
-            Console.WriteLine("Выберите героя:");
-            Console.WriteLine("1. Воин (Нажмите 1 для выбора)");
-            Console.WriteLine("2. Лучник (Нажмите 2 для выбора)");
-            Console.WriteLine("3. Маг (Нажмите 3 для выбора)");
-            
+            Text.Class_Selection();
+
             var person = new Person();//Создание переменной person, а потом ее переназначение
 
             //Для считывания клавиш
@@ -197,12 +181,10 @@ namespace Movement
                     return;
             }
 
+            DrawMap draw = new DrawMap();
+            int last_type_map = 0;
             ConsoleKeyInfo keyInfo = Console.ReadKey();
             person.inventory = new Inventory(); 
-            
-
-            Console.CursorVisible = false;
-            int coun = 0;
             Generate_Enemy gen = new Generate_Enemy(person);
             Spawn enemy_list = new Spawn();
             enemy_list.enemies = new List<Enemy>();
@@ -213,31 +195,15 @@ namespace Movement
 
                 Console.Clear();
 
-                if (draw.map[person.coordinates[1], person.coordinates[0] + 2] == '|' || draw.map[person.coordinates[1] + 2, person.coordinates[0]] == '-')
-                {
-                    person.coordinates[0] = 5;
-                    person.coordinates[1] = 22;
-                    person.level++;
-                    person.type_map = GenerationMap.GenerationMap.Random_map(person.type_map);
+                Checks.Checks.Next_Level(person, enemy_list, draw.map);
 
-                    
-                    Spawn.Spawn_Enemy(person, enemy_list.enemies);
-                    
-                    rnd = new();
-                }
-                
-                int a = rnd.Next(1, 160);
-                int b = rnd.Next(1, 30);
                 Move(person, keyInfo, draw.map);
+
                 GenerationMap.GenerationMap.Map(person, draw);
+
                 DrawPerson.Draw_Person(person.coordinates);
-                if (enemy_list.enemies.Count > 0)
-                {
-                    foreach (var enemy in enemy_list.enemies)
-                    {
-                        enemy.draw(enemy.coordinates[0], enemy.coordinates[1]);
-                    }
-                }
+
+                Spawn.Draw_Enemy(enemy_list);
                 
                 if (keyInfo.Key == ConsoleKey.B)
                 {
@@ -285,43 +251,18 @@ namespace Movement
                         Battle.Battle.Enemy_do(person, gen.enemy6, keyInfo);
                     } while (person.heart > 0 && gen.enemy6.hp > 0);
                 }
-                
-               
-                if (person.type_map == 1 | (person.level % 3 == 0 && draw.map[person.coordinates[1] - 3, person.coordinates[0]] == '-'))
-                {
-                    if(person.type_map != 1)
-                        last_type_map = person.type_map;
-                    person.type_map = 1;
-                    ChillRoom(person, keyInfo);
-                }
 
 
-                if(person.type_map == 1 && person.level != 0 && draw.map[person.coordinates[1] + 3, person.coordinates[0]] == '-')
-                {
-                    person.type_map = last_type_map;
-                }
+                Checks.Checks.Other(person, draw.map, last_type_map, keyInfo);
 
 
-                
+                Text.Stata(person);
 
-                if (person.level == 21)
+                if (person.level == 1)
                 {
                     Console.WriteLine("Вы выйграли!!!!");
                     break;
                 }
-
-
-                Console.SetCursorPosition(0, 39);
-                if (person.type_of_person == 1)
-                    Console.WriteLine("Персонаж - ВОИН");
-                else if (person.type_of_person == 2)
-                    Console.WriteLine("Персонаж - ЛУЧНИК");
-                else
-                    Console.WriteLine("Персонаж - МАГ");
-                Console.WriteLine("HP - {0} (Броня - {1})", person.heart, person.armor);
-                Console.WriteLine("Деньги - {0}", person.money);
-                Console.WriteLine("Дамаг - {0}    {1}", person.damage, person.weapon_name);
-
 
                 keyInfo = Console.ReadKey();
                 if(keyInfo.Key == ConsoleKey.Escape)

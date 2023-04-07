@@ -10,12 +10,14 @@
     <ProjectReference Include="..\Animation\Animation.csproj" />
     <ProjectReference Include="..\Battle\Battle.csproj" />
     <ProjectReference Include="..\Character\Character.csproj" />
+    <ProjectReference Include="..\Checks\Checks.csproj" />
     <ProjectReference Include="..\Draw\Draw.csproj" />
     <ProjectReference Include="..\enemy\enemy.csproj" />
     <ProjectReference Include="..\GenerationMap\GenerationMap.csproj" />
     <ProjectReference Include="..\Inventoty\Inventoty.csproj" />
     <ProjectReference Include="..\Menu\Menu.csproj" />
     <ProjectReference Include="..\quests\quests.csproj" />
+    <ProjectReference Include="..\TextOutput\TextOutput.csproj" />
     <ProjectReference Include="..\weapon\weapon.csproj" />
   </ItemGroup>
 

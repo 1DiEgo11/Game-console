@@ -7,8 +7,20 @@ using System.Runtime.CompilerServices;
 namespace Battle
 {
     public class Spawn
-    {
+    { 
         public List<Enemy> enemies;
+
+        public static void Draw_Enemy(Spawn enemy_list)
+        {
+            if (enemy_list.enemies.Count > 0)
+            {
+                foreach (var enemy in enemy_list.enemies)
+                {
+                    enemy.draw(enemy.coordinates[0], enemy.coordinates[1]);
+                }
+            }
+        }
+
         public static Enemy Random_Enemy(Person person)
         {
             Random rnd = new();
@@ -39,11 +51,6 @@ namespace Battle
             }
         }
 
-        static void Random_Spawn(Enemy enemy)
-        {
-            
-        }
-
         public static void Spawn_Enemy(Person person, List<Enemy> enemies)
         {
             
@@ -56,8 +63,7 @@ namespace Battle
                 Random rnd1 = new();
                 int x = rnd1.Next(1, 160);
                 int y = rnd1.Next(1, 30);
-                Enemy enemy = new();
-                enemy = Random_Enemy(person);
+                Enemy enemy = Random_Enemy(person);
                 enemy.coordinates[0] = x; enemy.coordinates[1] = y;
                 enemies.Add(enemy);
             }

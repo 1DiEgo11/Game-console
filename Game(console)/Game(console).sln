@@ -25,7 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Menu", "..\Menu\Menu.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Battle", "..\Battle\Battle.csproj", "{D56CEECC-08C2-4453-9A67-1B728A442AD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animation", "..\Animation\Animation.csproj", "{ABA20BC5-67C5-42FC-8B3A-078FA3F43B83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Animation", "..\Animation\Animation.csproj", "{ABA20BC5-67C5-42FC-8B3A-078FA3F43B83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextOutput", "..\TextOutput\TextOutput.csproj", "{BD5C9517-FB7B-44FB-BF51-0E3EDE76117B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checks", "..\Checks\Checks.csproj", "{A66C282B-2968-43D1-85B0-46B0A3178269}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +85,14 @@ Global
 		{ABA20BC5-67C5-42FC-8B3A-078FA3F43B83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABA20BC5-67C5-42FC-8B3A-078FA3F43B83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABA20BC5-67C5-42FC-8B3A-078FA3F43B83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD5C9517-FB7B-44FB-BF51-0E3EDE76117B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD5C9517-FB7B-44FB-BF51-0E3EDE76117B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD5C9517-FB7B-44FB-BF51-0E3EDE76117B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD5C9517-FB7B-44FB-BF51-0E3EDE76117B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A66C282B-2968-43D1-85B0-46B0A3178269}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A66C282B-2968-43D1-85B0-46B0A3178269}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A66C282B-2968-43D1-85B0-46B0A3178269}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A66C282B-2968-43D1-85B0-46B0A3178269}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
