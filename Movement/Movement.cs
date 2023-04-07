@@ -12,6 +12,15 @@ namespace Movement
 {
     public class MovePerson
     {
+        public static void ChillRoom(Person person, ConsoleKeyInfo keyInfo)
+        {
+            if (keyInfo.Key == ConsoleKey.E)
+            {
+                Console.Clear();
+                Quests.QuestRoom(person);
+            }
+        }
+
         public static void Move(Person person, ConsoleKeyInfo keyInfo, char[,] map)
         {
             switch (keyInfo.Key)
@@ -202,10 +211,13 @@ namespace Movement
 
         public static void Game()
         {
-            Console.CursorVisible = false;
-            
+            DrawMap draw = new DrawMap();
+            int last_type_map = 0;
 
-            Text.First_Text();
+            Console.SetCursorPosition(37, 13);
+            Console.WriteLine("ДЛЯ АДЕКВАТНОЙ РАБОТЫ НАЖМИТЕ ALT + ENTER");
+            Thread.Sleep(2000);
+            Console.Clear();
 
             int[] coordinates = { 5, 22 };//Начальные координаты гг
 
@@ -236,8 +248,6 @@ namespace Movement
                     return;
             }
 
-            DrawMap draw = new DrawMap();
-            int last_type_map = 0;
             ConsoleKeyInfo keyInfo = Console.ReadKey();
             person.inventory = new Inventory();
 
@@ -252,7 +262,12 @@ namespace Movement
 
                 Console.Clear();
 
-                Checks.Checks.Next_Level(person, enemy_list, draw.map);
+                if (draw.map[person.coordinates[1], person.coordinates[0] + 2] == '|' || draw.map[person.coordinates[1] + 2, person.coordinates[0]] == '-')
+                {
+                    person.coordinates[0] = 5;
+                    person.coordinates[1] = 22;
+                    person.level++;
+                    person.type_map = GenerationMap.GenerationMap.Random_map(person.type_map);
 
 
                     Spawn.Spawn_Enemy(person, enemy_list.enemies);
@@ -285,7 +300,7 @@ namespace Movement
                             }
                             else if (enemy.coordinates[1] > person.coordinates[1] && Move_limit(enemy, draw.map, 4))
                             {
-                                enemy.coordinates[1]--;
+                                enemy.coordinates[0]--;
                             }
                             enemy.draw(enemy.coordinates[0], enemy.coordinates[1]);
                         }
@@ -296,7 +311,7 @@ namespace Movement
                     {
 
                         if ((enemy.coordinates[0] - 2 < person.coordinates[0] && enemy.coordinates[2] + 2 > person.coordinates[0]
-                            || enemy.coordinates[2] + 4 > person.coordinates[0] + 2 && enemy.coordinates[0] - 4 < person.coordinates[0] + 2)
+                            || enemy.coordinates[2] + 2 > person.coordinates[0] + 2 && enemy.coordinates[0] - 2 < person.coordinates[0] + 2)
                             && (enemy.coordinates[1] - 5 < person.coordinates[1] + 1 && enemy.coordinates[3] + 4 > person.coordinates[1] + 1
                             || enemy.coordinates[3] + 5 > person.coordinates[1] - 1 && enemy.coordinates[1] - 5 < person.coordinates[1] - 1))
                         {
@@ -347,15 +362,27 @@ namespace Movement
                     person.type_map = last_type_map;
                 }
 
-                Checks.Checks.Other(person, draw.map, last_type_map, keyInfo);
 
 
 
-                if (person.level == 1)
+                if (person.level == 21)
                 {
                     Console.WriteLine("Вы выйграли!!!!");
                     break;
                 }
+
+
+                Console.SetCursorPosition(0, 39);
+                if (person.type_of_person == 1)
+                    Console.WriteLine("Персонаж - ВОИН");
+                else if (person.type_of_person == 2)
+                    Console.WriteLine("Персонаж - ЛУЧНИК");
+                else
+                    Console.WriteLine("Персонаж - МАГ");
+                Console.WriteLine("HP - {0} (Броня - {1})", person.heart, person.armor);
+                Console.WriteLine("Деньги - {0}", person.money);
+                Console.WriteLine("Дамаг - {0}    {1}", person.damage, person.weapon_name);
+
 
                 keyInfo = Console.ReadKey();
                 if (keyInfo.Key == ConsoleKey.Escape)
