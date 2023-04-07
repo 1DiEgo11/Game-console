@@ -1,15 +1,14 @@
 ﻿using character;
 using weapon;
-
+using quests;
 namespace Inventoty
 {
     public class Inventory
     {
         public static void Open_Inventory(Person person)
         {
-            Console.WriteLine("1. Оружие\n2. Зелья\n3. Броня");
-            int key = Convert.ToInt32(Console.ReadLine());
-            switch (key)
+            Console.WriteLine("1. Оружие({0})\n2. Зелья({1})\n3. Броня({2})\n4. Назад", person.inventory.weapons.Count, person.inventory.poizons.Count, person.inventory.armor.Count);
+            switch (Quests.GetIntInRange(4))
             {
                 case 1:
                     int num = 1;
@@ -39,6 +38,7 @@ namespace Inventoty
                     else
                     {
                         Console.WriteLine("Тут пусто. Нажмите ENTER");
+                        Console.ReadLine();
                     }
                     break;
                 case 2:
@@ -69,6 +69,7 @@ namespace Inventoty
                     else
                     {
                         Console.WriteLine("Тут пусто. Нажмите ENTER");
+                        Console.ReadLine();
                     }
                     break;
                 case 3:
@@ -99,7 +100,10 @@ namespace Inventoty
                     else
                     {
                         Console.WriteLine("Тут пусто. Нажмите ENTER");
+                        Console.ReadLine();
                     }
+                    break;
+                case 4:
                     break;
             }
         }

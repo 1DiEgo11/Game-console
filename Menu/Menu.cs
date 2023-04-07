@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace Menu
 {
@@ -104,8 +105,10 @@ namespace Menu
             Console.Write("W");
             Console.SetCursorPosition(84, 18);
             Console.Write("↑");
-            Console.SetCursorPosition(81, 19);
-            Console.Write("A←   →D");
+            Console.SetCursorPosition(82, 19);
+            Console.Write("A<");
+            Console.SetCursorPosition(85, 19);
+            Console.Write(">D");
             Console.SetCursorPosition(84, 20);
             Console.Write("↓");
             Console.SetCursorPosition(84, 21);

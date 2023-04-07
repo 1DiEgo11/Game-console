@@ -21,6 +21,7 @@ namespace character
         public int[] coordinates;
         public int money;
         public Inventory inventory;
+        public int mana;
         public string? weapon_type;
         public string? weapon_name;
         public string? poizon_type;
@@ -67,6 +68,7 @@ namespace character
         {
             this.type_of_person = 3;
             this.coordinates = coordinates;
+            this.mana = 100;
         }
     }
 }

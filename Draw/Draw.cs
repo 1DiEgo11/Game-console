@@ -1,5 +1,4 @@
 ﻿using character;
-using System.Runtime.CompilerServices;
 
 namespace Draw
 {

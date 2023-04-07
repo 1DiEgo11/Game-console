@@ -1,12 +1,70 @@
 ﻿using character;
 using enemy;
-using System;
-using System.Numerics;
 using weapon;
 using Animation_Enemys;
+using System.Runtime.CompilerServices;
 
 namespace Battle
 {
+    public class Spawn
+    {
+        public List<Enemy> enemies;
+        public static Enemy Random_Enemy(Person person)
+        {
+            Random rnd = new();
+            int type_enemy = rnd.Next(1, 7);
+            if (type_enemy == 1)
+            {
+                return new Zombi(person.level);
+            }
+            else if (type_enemy == 2)
+            {
+                return new Elite_Zombi(person.level);
+            }
+            else if (type_enemy == 3)
+            {
+                return new Skelet(person.level);
+            }
+            else if (type_enemy == 4)
+            {
+                return new Elite_Skelet(person.level);
+            }
+            else if (type_enemy == 5)
+            {
+                return new Wizzard(person.level);
+            }
+            else
+            {
+                return new Elite_Wizzard(person.level);
+            }
+        }
+
+        static void Random_Spawn(Enemy enemy)
+        {
+            
+        }
+
+        public static void Spawn_Enemy(Person person, List<Enemy> enemies)
+        {
+            
+            enemies.Clear();
+            Random random = new();
+            int rnd = random.Next(3, 7);
+            
+            for(int i = 0; i < rnd; i++)
+            {
+                Random rnd1 = new();
+                int x = rnd1.Next(1, 160);
+                int y = rnd1.Next(1, 30);
+                Enemy enemy = new();
+                enemy = Random_Enemy(person);
+                enemy.coordinates[0] = x; enemy.coordinates[1] = y;
+                enemies.Add(enemy);
+            }
+        }
+    }
+
+
     public class Battle
     {
         ConsoleKeyInfo keyInfo = Console.ReadKey();
