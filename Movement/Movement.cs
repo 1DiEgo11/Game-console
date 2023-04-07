@@ -56,11 +56,11 @@ namespace Movement
                     for (int i = 0; i < 2; i++)
                     {
                         if (map[person.coordinates[1] - 3, person.coordinates[0]] != '#' && map[person.coordinates[1] - 3, person.coordinates[0] + 1] != '#' &&
-                            map[person.coordinates[1] - 1, person.coordinates[0] - 1] != '#' && map[person.coordinates[1] - 1, person.coordinates[0] + 2] != '#')
+                            map[person.coordinates[1] - 2, person.coordinates[0] - 1] != '#' && map[person.coordinates[1] - 2, person.coordinates[0] + 2] != '#')
                         {
                             if (map[person.coordinates[1] - 3, person.coordinates[0]] == '-')
                             {
-                                person.coordinates[1]--;
+                                
                                 break;
                             }
                             else
@@ -89,9 +89,6 @@ namespace Movement
                     Inventoty.Inventory.Open_Inventory(person);
                     break;
             }
-        }
-
-        public static void Move_console() { 
         }
 
         public static int Move_limit(Enemy enemy)
@@ -207,15 +204,40 @@ namespace Movement
             Console.CursorVisible = false;
             int coun = 0;
             Generate_Enemy gen = new Generate_Enemy(person);
+            Spawn enemy_list = new Spawn();
+            enemy_list.enemies = new List<Enemy>();
+            Random rnd = new();
             //Передвижение по консоли
             do
             {
+
                 Console.Clear();
+
+                if (draw.map[person.coordinates[1], person.coordinates[0] + 2] == '|' || draw.map[person.coordinates[1] + 2, person.coordinates[0]] == '-')
+                {
+                    person.coordinates[0] = 5;
+                    person.coordinates[1] = 22;
+                    person.level++;
+                    person.type_map = GenerationMap.GenerationMap.Random_map(person.type_map);
+
+                    
+                    Spawn.Spawn_Enemy(person, enemy_list.enemies);
+                    
+                    rnd = new();
+                }
                 
+                int a = rnd.Next(1, 160);
+                int b = rnd.Next(1, 30);
                 Move(person, keyInfo, draw.map);
                 GenerationMap.GenerationMap.Map(person, draw);
                 DrawPerson.Draw_Person(person.coordinates);
-                //Generate_Enemy gen = new Generate_Enemy(person);
+                if (enemy_list.enemies.Count > 0)
+                {
+                    foreach (var enemy in enemy_list.enemies)
+                    {
+                        enemy.draw(enemy.coordinates[0], enemy.coordinates[1]);
+                    }
+                }
                 
                 if (keyInfo.Key == ConsoleKey.B)
                 {
@@ -264,9 +286,6 @@ namespace Movement
                     } while (person.heart > 0 && gen.enemy6.hp > 0);
                 }
                 
-                
-
-                keyInfo = Console.ReadKey();
                
                 if (person.type_map == 1 | (person.level % 3 == 0 && draw.map[person.coordinates[1] - 3, person.coordinates[0]] == '-'))
                 {
@@ -276,25 +295,21 @@ namespace Movement
                     ChillRoom(person, keyInfo);
                 }
 
-                if(person.type_map == 1 && person.level != 0 && draw.map[person.coordinates[1] + 2, person.coordinates[0]] == '-')
+
+                if(person.type_map == 1 && person.level != 0 && draw.map[person.coordinates[1] + 3, person.coordinates[0]] == '-')
                 {
                     person.type_map = last_type_map;
                 }
 
-                if (draw.map[person.coordinates[1], person.coordinates[0] + 2] == '|' || draw.map[person.coordinates[1] + 2, person.coordinates[0]] == '-')
-                {
-                    person.coordinates[0] = 5;
-                    person.coordinates[1] = 22;
-                    person.level++;
-                    person.type_map = GenerationMap.GenerationMap.Random_map(person.type_map);
-                    
-                }
-               
+
+                
+
                 if (person.level == 21)
                 {
                     Console.WriteLine("Вы выйграли!!!!");
                     break;
                 }
+
 
                 Console.SetCursorPosition(0, 39);
                 if (person.type_of_person == 1)
@@ -303,16 +318,14 @@ namespace Movement
                     Console.WriteLine("Персонаж - ЛУЧНИК");
                 else
                     Console.WriteLine("Персонаж - МАГ");
-
                 Console.WriteLine("HP - {0} (Броня - {1})", person.heart, person.armor);
                 Console.WriteLine("Деньги - {0}", person.money);
                 Console.WriteLine("Дамаг - {0}    {1}", person.damage, person.weapon_name);
 
+
                 keyInfo = Console.ReadKey();
                 if(keyInfo.Key == ConsoleKey.Escape)
                     Menu.Menu.Esc();
-
-                
 
             } while (true);
         }

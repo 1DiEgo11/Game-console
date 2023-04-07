@@ -18,16 +18,16 @@ namespace enemy
         {
             this.hp = 3;
             this.damage = 1;
-            Random random = new Random();
+            Random random = new();
             int mobX = random.Next(15, 60);
             int mobY = random.Next(15, 30);
             this.coordinates[0] = mobX;
             this.coordinates[1] = mobY;
-            
         }
-    
-    
-    
+        public virtual void draw(int mobX, int mobY)
+        {
+            Console.WriteLine("ВРАГ!!!!");
+        }
     }
 
     public class Zombi : Enemy
@@ -45,7 +45,7 @@ namespace enemy
             this.coordinates[3] = this.coordinates[1] + this.sizey;
         }
 
-        public  void draw(int mobX, int mobY)
+        public override void draw(int mobX, int mobY)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.SetCursorPosition(mobX, mobY);  //маленький враг 1типа
@@ -68,7 +68,7 @@ namespace enemy
             this.coordinates[2] = this.coordinates[0] + this.sizex;
             this.coordinates[3] = this.coordinates[1] + this.sizey;
         }
-        public void draw(int mobX, int mobY)
+        public override void draw(int mobX, int mobY)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.SetCursorPosition(mobX, mobY);//средний враг 1типа
@@ -77,7 +77,6 @@ namespace enemy
             Console.Write("/#\\");
             Console.SetCursorPosition(mobX + 1, mobY + 2);
             Console.Write("| |");
-            Console.ForegroundColor = ConsoleColor.Green;
         }
     }
 
@@ -95,7 +94,7 @@ namespace enemy
             this.coordinates[2] = this.coordinates[0] + this.sizex;
             this.coordinates[3] = this.coordinates[1] + this.sizey;
         }
-        public void draw(int mobX, int mobY)
+        public override void draw(int mobX, int mobY)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.SetCursorPosition(mobX, mobY);  //маленький враг 2типа
@@ -118,7 +117,7 @@ namespace enemy
             this.coordinates[2] = this.coordinates[0] + this.sizex;
             this.coordinates[3] = this.coordinates[1] + this.sizey;
         }
-        public void draw(int mobX, int mobY)
+        public override void draw(int mobX, int mobY)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.SetCursorPosition(mobX, mobY);//средний враг 2типа
@@ -145,7 +144,7 @@ namespace enemy
             this.coordinates[2] = this.coordinates[0] + this.sizex;
             this.coordinates[3] = this.coordinates[1] + this.sizey;
         }
-        public void draw(int mobX, int mobY)
+        public override void draw(int mobX, int mobY)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.SetCursorPosition(mobX, mobY);//маленький враг 3типа
@@ -168,7 +167,7 @@ namespace enemy
             this.coordinates[2] = this.coordinates[0] + this.sizex;
             this.coordinates[3] = this.coordinates[1] + this.sizey;
         }
-        public void draw(int mobX, int mobY)
+        public override void draw(int mobX, int mobY)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.SetCursorPosition(mobX, mobY);//средний враг 3типа
@@ -194,7 +193,7 @@ namespace enemy
             this.coordinates[2] = this.coordinates[0] + this.sizex;
             this.coordinates[3] = this.coordinates[1] + this.sizey;
         }
-        public void draw(int mobX, int mobY)
+        public override void draw(int mobX, int mobY)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.SetCursorPosition(mobX, mobY);   //босс 1типа
@@ -236,7 +235,7 @@ namespace enemy
             this.coordinates[2] = this.coordinates[0] + this.sizex;
             this.coordinates[3] = this.coordinates[1] + this.sizey;
         }
-        public void draw(int mobX, int mobY)
+        public override void draw(int mobX, int mobY)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.SetCursorPosition(mobX, mobY);  //босс 2типа

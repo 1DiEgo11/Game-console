@@ -7,7 +7,7 @@ namespace Inventoty
     {
         public static void Open_Inventory(Person person)
         {
-            Console.WriteLine("1. Оружие\n2. Зелья\n3. Броня\n4. Назад");
+            Console.WriteLine("1. Оружие({0})\n2. Зелья({1})\n3. Броня({2})\n4. Назад", person.inventory.weapons.Count, person.inventory.poizons.Count, person.inventory.armor.Count);
             switch (Quests.GetIntInRange(4))
             {
                 case 1:
