@@ -18,11 +18,11 @@ namespace enemy
         {
             this.hp = 3;
             this.damage = 1;
-            Random random = new();
-            int mobX = random.Next(15, 60);
-            int mobY = random.Next(15, 30);
-            this.coordinates[0] = mobX;
-            this.coordinates[1] = mobY;
+            //Random random = new();
+            //int mobX = random.Next(15, 60);
+            //int mobY = random.Next(15, 30);
+            //this.coordinates[0] = mobX;
+            //this.coordinates[1] = mobY;
         }
         public virtual void draw(int mobX, int mobY)
         {

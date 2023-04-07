@@ -3,6 +3,8 @@ using enemy;
 using weapon;
 using Animation_Enemys;
 using System.Runtime.CompilerServices;
+using Draw;
+using System;
 
 namespace Battle
 {
@@ -46,19 +48,19 @@ namespace Battle
 
         public static void Spawn_Enemy(Person person, List<Enemy> enemies)
         {
-            
+
             enemies.Clear();
             Random random = new();
             int rnd = random.Next(3, 7);
-            
-            for(int i = 0; i < rnd; i++)
+
+            for (int i = 0; i < rnd; i++)
             {
                 Random rnd1 = new();
                 int x = rnd1.Next(1, 160);
                 int y = rnd1.Next(1, 30);
                 Enemy enemy = new();
                 enemy = Random_Enemy(person);
-                enemy.coordinates[0] = x; enemy.coordinates[1] = y;
+                enemy.coordinates[0] = x; enemy.coordinates[1] = y; enemy.coordinates[2] = x + enemy.sizex; enemy.coordinates[3] = y + enemy.sizey;
                 enemies.Add(enemy);
             }
         }
@@ -98,19 +100,28 @@ namespace Battle
             }
         }
 
-        public static void Enemy_do(Person player, Enemy enemy, ConsoleKeyInfo keyInfo)
+        public static void Enemy_do(Person player, Enemy enemy)
 
         {
+            Console.SetCursorPosition(0, 0);
+            Console.WriteLine("Your hp: {0}", player.heart);
+            Console.WriteLine("Your Damage: {0}", player.damage);
+            Console.WriteLine("Your Armor: {0}%", (1-player.armor)*100);
+
+            Console.SetCursorPosition(160, 0);
+            Console.Write("Enemy's hp: {0}", enemy.hp);
+            DrawPerson.Draw_gg();
+            DrawPerson.Draw_enemy(enemy);
+            ConsoleKeyInfo keyInfo = Console.ReadKey();
             Animation.GG(keyInfo);
-            Console.WriteLine(enemy.hp);
-            Console.WriteLine(player.heart);
+
             Random random = new Random();
             int res = random.Next(0, 11);
             if (res < 6) //attack
             {
                 if (keyInfo.Key == ConsoleKey.X)
                 {
-   
+
                     Battle.Miss(player, enemy);
                 }
                 else
@@ -122,6 +133,10 @@ namespace Battle
                     }
                     player.heart -= enemy.damage;
                 }
+                if (enemy.type_of_person < 3) { Animation.AnimationEnemy1(); }
+                else if (enemy.type_of_person == 3 || enemy.type_of_person == 4) { Animation.AnimationEnemy2(); }
+                else if (enemy.type_of_person == 5 || enemy.type_of_person == 6) { Animation.AnimationEnemy3(); }
+                else { Animation.draw_deag(); }
             }
             else
             {
@@ -129,36 +144,15 @@ namespace Battle
                 {
                     Battle.Enemy_miss(player, enemy);
                 }
+
             }
-            
-            if (enemy.type_of_person < 3) { Animation.AnimationEnemy1(); }
-            else if (enemy.type_of_person == 3 || enemy.type_of_person == 4 ) { Animation.AnimationEnemy2(); }
-            else if (enemy.type_of_person == 5 || enemy.type_of_person == 6) { Animation.AnimationEnemy3(); }
+            //if (enemy.type_of_person < 3) { Animation.AnimationEnemy1(); }
+            //else if (enemy.type_of_person == 3 || enemy.type_of_person == 4) { Animation.AnimationEnemy2(); }
+            //else if (enemy.type_of_person == 5 || enemy.type_of_person == 6) { Animation.AnimationEnemy3(); }
+            //else { Animation.draw_deag(); }
+
             Console.WriteLine(enemy.hp);
             Console.WriteLine(player.heart);
         }
-
     }
-    public class Generate_Enemy 
-    {
-        public Zombi enemy1;
-        public Elite_Zombi enemy2;
-        public Skelet enemy3;
-        public Elite_Skelet enemy4;
-        public Wizzard enemy5;
-        public Elite_Wizzard enemy6;
-        public Generate_Enemy(Person player)
-        {
-            enemy1 = new Zombi(player.level);
-            enemy2 = new Elite_Zombi(player.level);
-            enemy3 = new Skelet(player.level);
-            enemy4 = new Elite_Skelet(player.level);
-            enemy5 = new Wizzard(player.level);
-            enemy6 = new Elite_Wizzard(player.level);
-            
-
-        }
-      
-    }
-       
 }

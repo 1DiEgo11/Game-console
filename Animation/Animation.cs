@@ -95,8 +95,7 @@ namespace Animation_Enemys
             Console.ForegroundColor = ConsoleColor.Yellow;
             int y = 25;
 
-            //while (true)
-            //{
+            
                 y = 25;
                 for (int i = 0; i < enemy1.Length; i++)
                 {
@@ -217,8 +216,7 @@ namespace Animation_Enemys
 
             };
             int y;
-            //while (true)
-            //{
+ 
                 Console.CursorVisible = false;
                 Console.ForegroundColor = ConsoleColor.Green;
                 y = 25;
@@ -376,7 +374,7 @@ namespace Animation_Enemys
             int y;
             Console.CursorVisible = false;
             Console.ForegroundColor = ConsoleColor.Red;
-            y = 25;
+            y = 20;
 
             for (int i = 0; i < frame1.Length; i++)
             {
@@ -385,8 +383,8 @@ namespace Animation_Enemys
                 Console.WriteLine(ReverseString(frame1[i]));
                 y++;
             }
-            System.Threading.Thread.Sleep(50);
-            y = 25;
+            System.Threading.Thread.Sleep(150);
+            y = 20;
             //Console.Clear();
             for (int i = 0; i < frame2.Length; i++)
             {
@@ -394,8 +392,8 @@ namespace Animation_Enemys
                 Console.WriteLine(ReverseString(frame2[i]));
                 y++;
             }
-            System.Threading.Thread.Sleep(50);
-            y = 25;
+            System.Threading.Thread.Sleep(150);
+            y = 20;
             //Console.Clear();
             for (int i = 0; i < frame3.Length; i++)
             {
@@ -403,15 +401,15 @@ namespace Animation_Enemys
                 Console.WriteLine(ReverseString(frame3[i]));
                 y++;
             }
-            System.Threading.Thread.Sleep(50);
-            y = 25;
+            System.Threading.Thread.Sleep(150);
+            y = 20;
             for (int i = 0; i < frame1.Length; i++)
             {
                 Console.SetCursorPosition(112, y);
                 Console.WriteLine(ReverseString(frame2[i]));
                 y++;
             }
-            System.Threading.Thread.Sleep(50);
+            System.Threading.Thread.Sleep(150);
             //Console.Clear();
         }
 
@@ -861,7 +859,7 @@ namespace Animation_Enemys
 {"                                                                                                "},
 {"                                                                                                "},
 {"                                                                                                "}};
-                    Console.SetCursorPosition(112, 0);
+                    Console.SetCursorPosition(112, 1);
                     int y = 0;
                     System.Threading.Thread.Sleep(120);
                     for (int i = 0; i < dragon2.GetLength(0); i++)
@@ -873,11 +871,11 @@ namespace Animation_Enemys
                         }
                         y = y + 1;
                         Console.WriteLine();
-                        Console.SetCursorPosition(90, y);
+                        Console.SetCursorPosition(112, y);
                     }
 
                     y = 0;
-                    Console.SetCursorPosition(112, 0);
+                    Console.SetCursorPosition(112, 1);
                     System.Threading.Thread.Sleep(120);
 
 
@@ -890,11 +888,11 @@ namespace Animation_Enemys
                         }
                         y = y + 1;
                         Console.WriteLine();
-                        Console.SetCursorPosition(90, y);
+                        Console.SetCursorPosition(112, y);
                     }
 
                     y = 0;
-                    Console.SetCursorPosition(112, 0);
+                    Console.SetCursorPosition(112, 1);
                     System.Threading.Thread.Sleep(120);
 
                     for (int i = 0; i < dragon1.GetLength(0); i++)
@@ -906,12 +904,12 @@ namespace Animation_Enemys
                         }
                         y = y + 1;
                         Console.WriteLine();
-                        Console.SetCursorPosition(90, y);
+                        Console.SetCursorPosition(112, y);
                     }
 
 
                     y = 0;
-                    Console.SetCursorPosition(112, 0);
+                    Console.SetCursorPosition(112, 1);
                     System.Threading.Thread.Sleep(120);
                     for (int i = 0; i < dragon2.GetLength(0); i++)
                     {
@@ -922,12 +920,12 @@ namespace Animation_Enemys
                         }
                         y = y + 1;
                         Console.WriteLine();
-                        Console.SetCursorPosition(90, y);
+                        Console.SetCursorPosition(112, y);
                     }
 
 
                     y = 0;
-                    Console.SetCursorPosition(90, 0);
+                    Console.SetCursorPosition(112, 1);
                     System.Threading.Thread.Sleep(120);
                     for (int i = 0; i < dragon1.GetLength(0); i++)
                     {
@@ -937,7 +935,7 @@ namespace Animation_Enemys
                         }
                         Console.WriteLine();
                         y = y + 1;
-                        Console.SetCursorPosition(90, y);
+                        Console.SetCursorPosition(112, y);
                     }
                 }
             }
