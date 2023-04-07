@@ -23,6 +23,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventoty", "..\Inventoty\I
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Menu", "..\Menu\Menu.csproj", "{3E5D0F42-2960-465E-97E8-FBD111FA3EE0}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Battle", "..\Battle\Battle.csproj", "{D56CEECC-08C2-4453-9A67-1B728A442AD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animation", "..\Animation\Animation.csproj", "{ABA20BC5-67C5-42FC-8B3A-078FA3F43B83}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{3E5D0F42-2960-465E-97E8-FBD111FA3EE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E5D0F42-2960-465E-97E8-FBD111FA3EE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E5D0F42-2960-465E-97E8-FBD111FA3EE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D56CEECC-08C2-4453-9A67-1B728A442AD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D56CEECC-08C2-4453-9A67-1B728A442AD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D56CEECC-08C2-4453-9A67-1B728A442AD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D56CEECC-08C2-4453-9A67-1B728A442AD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABA20BC5-67C5-42FC-8B3A-078FA3F43B83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABA20BC5-67C5-42FC-8B3A-078FA3F43B83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABA20BC5-67C5-42FC-8B3A-078FA3F43B83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABA20BC5-67C5-42FC-8B3A-078FA3F43B83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

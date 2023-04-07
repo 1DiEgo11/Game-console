@@ -25,6 +25,9 @@ namespace enemy
             this.coordinates[1] = mobY;
             
         }
+    
+    
+    
     }
 
     public class Zombi : Enemy

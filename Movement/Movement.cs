@@ -3,6 +3,8 @@ using Draw;
 using enemy;
 using Menu;
 using quests;
+using Battle;
+using Animation_Enemys;
 
 namespace Movement
 {
@@ -203,7 +205,8 @@ namespace Movement
             
 
             Console.CursorVisible = false;
-
+            int coun = 0;
+            Generate_Enemy gen = new Generate_Enemy(person);
             //Передвижение по консоли
             do
             {
@@ -212,12 +215,13 @@ namespace Movement
                 Move(person, keyInfo, draw.map);
                 GenerationMap.GenerationMap.Map(person, draw);
                 DrawPerson.Draw_Person(person.coordinates);
-
+                //Generate_Enemy gen = new Generate_Enemy(person);
+                
                 if (keyInfo.Key == ConsoleKey.B)
                 {
                     Console.Clear();
                     Console.WriteLine("Zombie:");
-
+                    
                     do
                     {
                         keyInfo = Console.ReadKey();
@@ -259,7 +263,11 @@ namespace Movement
                         Battle.Battle.Enemy_do(person, gen.enemy6, keyInfo);
                     } while (person.heart > 0 && gen.enemy6.hp > 0);
                 }
+                
+                
 
+                keyInfo = Console.ReadKey();
+               
                 if (person.type_map == 1 | (person.level % 3 == 0 && draw.map[person.coordinates[1] - 3, person.coordinates[0]] == '-'))
                 {
                     if(person.type_map != 1)
@@ -279,8 +287,9 @@ namespace Movement
                     person.coordinates[1] = 22;
                     person.level++;
                     person.type_map = GenerationMap.GenerationMap.Random_map(person.type_map);
+                    
                 }
-                
+               
                 if (person.level == 21)
                 {
                     Console.WriteLine("Вы выйграли!!!!");

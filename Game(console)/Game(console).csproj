@@ -9,10 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Animation\Animation.csproj" />
+    <ProjectReference Include="..\Battle\Battle.csproj" />
     <ProjectReference Include="..\Character\Character.csproj" />
     <ProjectReference Include="..\Draw\Draw.csproj" />
     <ProjectReference Include="..\enemy\enemy.csproj" />
+    <ProjectReference Include="..\Inventoty\Inventoty.csproj" />
+    <ProjectReference Include="..\Menu\Menu.csproj" />
     <ProjectReference Include="..\Movement\Movement.csproj" />
+    <ProjectReference Include="..\quests\quests.csproj" />
     <ProjectReference Include="..\weapon\weapon.csproj" />
   </ItemGroup>
 

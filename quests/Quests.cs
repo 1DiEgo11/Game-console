@@ -468,7 +468,7 @@ namespace quests
                         break;
                     case 3:
                         Console.WriteLine("Красава, братишка. Сразу видно, логика у тебя развита хорошо. Держи, ступай с миром.");
-                        person.inventory.weapons.Add(new Tomorrow_by_the_second());//можно забабахать класс оружия с названием розочка ////а можно и не забабахать) 
+                        person.inventory.weapons.Add(new Tomorrow_by_the_second());//можно забабахать класс оружия с названием розочка ////а можно и не забабахать) ////// а поспать можно?
                         Console.ReadLine();
                         break;
                 }
@@ -517,7 +517,7 @@ namespace quests
                         break;
                     case 2:
                         Console.WriteLine("Так ты петушок галимый. Пацаны, птичка попалась в клетку.");
-                        person.armor = 0;// -армор
+                        person.armor = 1;// -армор
                         Console.ReadLine();
                         break;
                     case 3:
@@ -528,7 +528,7 @@ namespace quests
                     case 4:
                         Console.WriteLine("Готовь ж**у и рот, щас будем мылить и обмывать, петушок.");
                         person.heart--;
-                        person.armor = 0;// -макс хп - армор
+                        person.armor = 1;// -макс хп - армор
                         Console.ReadLine();
                         break;
 
@@ -554,7 +554,7 @@ namespace quests
                     case 3:
                         Console.WriteLine("Опана,сразу задняя, так значит либо маму не любишь, либо петух.");
                         person.heart--;
-                        person.armor = 0;// -maxhp-armor
+                        person.armor = 1;// -maxhp-armor
                         Console.ReadLine();
                         break;
                     case 4:
