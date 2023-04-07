@@ -16,7 +16,7 @@ namespace Inventoty
                     {
                         foreach (var weapon in person.inventory.weapons)
                         {
-                            Console.WriteLine("{0}. {1} ", num, weapon.Name);
+                            Console.WriteLine("{0}. {1} (дамаг - {2})", num, weapon.Name, weapon.Damage);
                             num++;
                         }
                         Console.WriteLine("{0}. Назад", num);
@@ -78,7 +78,7 @@ namespace Inventoty
                     {
                         foreach (var armor in person.inventory.armor)
                         {
-                            Console.WriteLine("{0}. {1}", num, armor.Name);
+                            Console.WriteLine("{0}. {1} (Коэффициент Брони - {2})", num, armor.Name, armor.Damage);
                             num++;
                         }
                         Console.WriteLine("{0}. Назад", num);

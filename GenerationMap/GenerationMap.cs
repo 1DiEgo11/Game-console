@@ -14,9 +14,9 @@ namespace GenerationMap
             int rnd1 = random.Next(1, 5);
             if (rnd != x)
                 type_map = rnd;
-            else if (x == 1)
+            else if (rnd == 1)
                 type_map = x + rnd1;
-            else if (x == 6)
+            else if (rnd == 5)
                 type_map = x - rnd1;
             else
                type_map = x + 1;
