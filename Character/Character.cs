@@ -21,7 +21,6 @@ namespace character
         public int[] coordinates;
         public int money;
         public Inventory inventory;
-        public int mana;
         public string? weapon_type;
         public string? weapon_name;
         public string? poizon_type;
@@ -35,7 +34,7 @@ namespace character
         {
             this.type_map = 1;
             this.type_of_person = 0;
-            this.heart = 200;
+            this.heart = 20;
             this.money = 100;
             this.damage = 10;
             this.armor = 0;
@@ -48,6 +47,8 @@ namespace character
         public Warrior(int[] coordinates)
         {
             this.type_of_person = 1;
+            this.heart = 40;
+            this.damage = 15;
             this.coordinates = coordinates;
             this.armor++;
         }
@@ -58,6 +59,8 @@ namespace character
         public Archer(int[] coordinates)
         {
             this.type_of_person = 2;
+            this.heart = 20;
+            this.damage = 20;
             this.coordinates = coordinates;
         }
     }
@@ -67,8 +70,9 @@ namespace character
         public Mage(int[] coordinates)
         {
             this.type_of_person = 3;
+            this.heart = 20;
+            this.damage = 35;
             this.coordinates = coordinates;
-            this.mana = 100;
         }
     }
 }

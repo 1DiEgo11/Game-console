@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Animation\Animation.csproj" />
     <ProjectReference Include="..\Character\Character.csproj" />
+    <ProjectReference Include="..\enemy\enemy.csproj" />
   </ItemGroup>
 
 </Project>

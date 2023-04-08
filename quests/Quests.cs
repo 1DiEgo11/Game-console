@@ -55,7 +55,7 @@ namespace quests
                         {
                             person.money -= 1000;
                             Console.WriteLine(vot + " божественный меч. В нем хранится сила наисильнейших существ!");
-                            person.inventory.weapons.Add(new Dildo());
+                            person.inventory.weapons.Add(new Gods_sword());
                         }
                         else
                             Console.WriteLine("У тебя не хватает деняг. Иди Сражайся друг мой!");
@@ -508,7 +508,7 @@ namespace quests
                 Console.WriteLine("1 - Мыло со стола\n2 - Хлеб с параши\n3 - Стол не мыльница, параша не хлебница\n4 - И то, и другое\n");
                 int optionMylo = GetIntInRange(4);
 
-                switch (Convert.ToInt32(Console.ReadKey().ToString()))
+                switch (optionMylo)
                 {
                     case 1:
                         Console.WriteLine("Щас мы тебе рот намылим.");
